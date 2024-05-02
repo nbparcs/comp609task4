@@ -4,7 +4,7 @@
              x:Class="comp609task4.Pages.DataPage"
              Title="DataPage">
     <VerticalStackLayout>
-        <Label 
+        <Label FontSize="20px"
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
