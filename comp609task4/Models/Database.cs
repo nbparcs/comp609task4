@@ -6,6 +6,7 @@ public class Database
     public Database() //establish connection to database first
     {
         string dbName = "FarmDataOriginal.db";
+        
         string dbPath = Path.Combine(Current.AppDataDirectory, dbName); //GlobalUsings FileSystems
         if (!File.Exists(dbPath))
         {
@@ -14,7 +15,7 @@ public class Database
 
             using MemoryStream memoryStream = new();
             stream.CopyTo(memoryStream);
-            File.WriteAllBytes(dbPath, memoryStream.ToArray()); //write db data to app directory
+            File.WriteAllBytes(dbPath, memoryStream.ToArray()); //write db data to app directory a
         }
         _connection = new SQLiteConnection(dbPath); //initialise the connection
         _connection.CreateTables<Cow, Sheep>();//create if its not existing yet

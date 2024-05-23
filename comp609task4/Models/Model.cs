@@ -2,9 +2,9 @@
 {
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
-    public string? Wool { get; set; }
+
     public string? Colour { get; set; }
-    public double Milk { get; set; }
+    
     public double Cost {  get; set; }
     public double Weight { get; set; }
 }
@@ -12,10 +12,12 @@
 [Table("Cow")]
 public class Cow : Animals
 {
-    //public int SalesVolume { get; set; }
+    public string? Animal { get; set; } = "Cow";
+    public double Milk { get; set; }
+
     public override string ToString()
     {
-        return $"{Milk,-12}{Id,-20}{Cost,-12}{Weight,-12}{Colour,-12}";
+        return $"{Id,-20}{Cost,-12}{Weight,-12}{Colour,-12}{Milk, -12}";
     }
 }
 
@@ -23,9 +25,10 @@ public class Cow : Animals
 [Table("Sheep")]
 public class Sheep : Animals
 {
-    //public int TeamSize { get; set; }
+    public string? Animal { get; set; } = "Sheep";
+    public string? Wool { get; set; }
     public override string ToString()
     {
-        return $"{"Sheep",-13} {Wool,-12}{Id,-20}{Cost,-12}{Weight,-12}{Colour,-12}";
+        return $"{Id,-20}{Cost,-12}{Weight,-12}{Colour,-12}{Wool,-12}";
     }
 }

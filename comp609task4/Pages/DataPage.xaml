@@ -5,6 +5,7 @@
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"
              x:Class="comp609task4.Pages.DataPage"
              Title="DataPage">
+    
     <Border Margin="40,40" BackgroundColor="Grey" StrokeShape="RoundRectangle 10">
         <CollectionView 
         BackgroundColor="AntiqueWhite"
@@ -12,13 +13,14 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border BackgroundColor="AliceBlue" StrokeShape="Rectangle 15" Padding="10,5">
-                        <Grid ColumnDefinitions="*,*,*,*,*,*">
-                            <Label Grid.Column="0" Text="{Binding Milk}"/>
-                            <Label Grid.Column="1" Text="{Binding Wool}"/>
-                            <Label Grid.Column="2" Text="{Binding Id}"/>
-                            <Label Grid.Column="3" Text="{Binding Cost}"/>
-                            <Label Grid.Column="4" Text="{Binding Weight}"/>
-                            <Label Grid.Column="5" Text="{Binding Colour}"/>
+                        <Grid ColumnDefinitions="*,*,*,*,*,*,*">
+                            <Label Grid.Column="0" Text="{Binding Id}"/>
+                            <Label Grid.Column="1" Text="{Binding Cost}"/>
+                            <Label Grid.Column="2" Text="{Binding Weight}"/>
+                            <Label Grid.Column="3" Text="{Binding Colour}"/>
+                            <Label Grid.Column="4" Text="{Binding Milk}"/>
+                            <Label Grid.Column="5" Text="{Binding Wool}"/>
+                            <Label Grid.Column="6" Text="{Binding Animal}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
