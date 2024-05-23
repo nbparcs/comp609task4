@@ -18,7 +18,8 @@ namespace comp609task4
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddTransient<DataPage>();
             return builder.Build();
         }
     }

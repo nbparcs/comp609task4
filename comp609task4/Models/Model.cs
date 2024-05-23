@@ -2,7 +2,8 @@
 {
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
-    public string Colour { get; set; }
+    public string? Wool { get; set; }
+    public string? Colour { get; set; }
     public double Milk { get; set; }
     public double Cost {  get; set; }
     public double Weight { get; set; }
@@ -18,12 +19,13 @@ public class Cow : Animals
     }
 }
 
-public class Sheep
+
+[Table("Sheep")]
+public class Sheep : Animals
 {
-    [PrimaryKey, AutoIncrement]
-    public int Id { get; set; }
-    public string Colour { get; set; }
-    public double Wool { get; set; }
-    public double Cost { get; set; }
-    public double Weight { get; set; }
+    //public int TeamSize { get; set; }
+    public override string ToString()
+    {
+        return $"{"Sheep",-13} {Wool,-12}{Id,-20}{Cost,-12}{Weight,-12}{Colour,-12}";
+    }
 }

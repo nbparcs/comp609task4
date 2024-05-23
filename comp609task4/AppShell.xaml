@@ -4,14 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:comp609task4"
-    
+    xmlns:Pages="clr-namespace:comp609task4.Pages"
     Shell.FlyoutBehavior="Disabled"
     Title="comp609task4">
-<!--
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
--->
-    <ShellContent ContentTemplate="{DataTemplate Pages:NumberPage}"/>
+    <TabBar>
+        <Tab Title="Data Listing" Shell.NavBarIsVisible="False">
+            <ShellContent ContentTemplate="{DataTemplate Pages:DataPage}"/>
+        </Tab>
+    </TabBar>
 </Shell>
