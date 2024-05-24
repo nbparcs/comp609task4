@@ -8,8 +8,23 @@
     Shell.FlyoutBehavior="Disabled"
     Title="comp609task4">
     <TabBar>
-        <Tab Title="Data Listing" Shell.NavBarIsVisible="False">
+        <Tab Title="Data Listing" Shell.NavBarIsVisible="True">
             <ShellContent ContentTemplate="{DataTemplate Pages:DataPage}"/>
+        </Tab>
+        <Tab Title="Stats and Investment" Shell.NavBarIsVisible="True">
+            <ShellContent ContentTemplate="{DataTemplate Pages:StatsnInvestmentPage}"/>
+        </Tab>
+        <Tab Title="LiveStock Info" Shell.NavBarIsVisible="True">
+            <ShellContent ContentTemplate="{DataTemplate Pages:InfoPage}"/>
+        </Tab>
+        <Tab Title="Insert LiveStock" Shell.NavBarIsVisible="True">
+            <ShellContent ContentTemplate="{DataTemplate Pages:InsertPage}"/>
+        </Tab>
+        <Tab Title="Delete LiveStock" Shell.NavBarIsVisible="True">
+            <ShellContent ContentTemplate="{DataTemplate Pages:DeletePage}"/>
+        </Tab>
+        <Tab Title="Update LiveStock" Shell.NavBarIsVisible="True">
+            <ShellContent ContentTemplate="{DataTemplate Pages:UpdatePage}"/>
         </Tab>
     </TabBar>
 </Shell>
