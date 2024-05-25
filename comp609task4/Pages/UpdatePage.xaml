@@ -1,37 +1,63 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- ContentPage definition with necessary namespaces -->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Pages="clr-namespace:comp609task4.Pages"
              x:Class="comp609task4.Pages.UpdatePage"
-             Title="UpdatePage"
-             x:DataType="Pages:UpdatePage">
+    Title="UpdatePage"
+    x:DataType="Pages:UpdatePage">
+    <!-- Bind the DataContext to this page's type -->
+
+    <!-- Grid layout with padding and maximum width -->
     <Grid Padding="10"
           MaximumWidthRequest="500"
-          RowDefinitions="50, 50, 50, 50, 50,50,50,50, *"
-          RowSpacing="10">
+          RowDefinitions="50, 50, 50, 50, 50, 50, 50, 50, *"
+        RowSpacing="10">
+        <!-- Set the spacing between rows -->
+
+        <!-- Label for the page title -->
         <Label Text="Update Record" HorizontalTextAlignment="Start" FontSize="Large" />
+
+        <!-- Entry for LiveStock ID, placed in the second row of the grid -->
         <Entry Grid.Row="1"
                x:Name="LiveStockID"
                Placeholder="Enter LiveStock ID" />
+
+        <!-- Entry for LiveStock Colour, placed in the third row of the grid -->
         <Entry Grid.Row="2"
                x:Name="LiveStockColour"
                Placeholder="Enter LiveStock Colour" />
+
+        <!-- Entry for LiveStock Cost, placed in the fourth row of the grid -->
         <Entry Grid.Row="3"
                x:Name="LiveStockCost"
                Placeholder="Enter LiveStock Cost" />
+
+        <!-- Entry for LiveStock Weight, placed in the fifth row of the grid -->
         <Entry Grid.Row="4"
                x:Name="LiveStockWeight"
                Placeholder="Enter LiveStock Weight" />
+
+        <!-- Entry for milk produced, placed in the sixth row of the grid -->
         <Entry Grid.Row="5"
                x:Name="LiveStockMilk"
                Placeholder="Enter milk produced" />
+
+        <!-- Nested grid for wool entry and update button, placed in the seventh row -->
         <Grid ColumnDefinitions="2*,1*" ColumnSpacing="5" Grid.Row="6">
+            <!-- Entry for wool produced, taking two-thirds of the row width -->
             <Entry
                x:Name="LiveStockWool"
                Placeholder="Enter wool produced" />
+
+            <!-- Update button, taking one-third of the row width, triggering UpdateRecord_Btn on click -->
             <Button Text="Update" Clicked="UpdateRecord_Btn" Grid.Column="1"/>
         </Grid>
+
+        <!-- Label to display "Updated Record:", placed in the eighth row -->
         <Label Grid.Row="7" Text="Updated Record: " HorizontalTextAlignment="Start"/>
-        <ListView ItemsSource="{Binding UpdateRecord}"  Grid.Row="8"/>
+
+        <!-- ListView to display updated records, binding to UpdateRecord property, placed in the last row -->
+        <ListView ItemsSource="{Binding UpdateRecord}" Grid.Row="8"/>
     </Grid>
 </ContentPage>
