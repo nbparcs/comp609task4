@@ -21,6 +21,7 @@
             <!--Text in clicked is the name for the function in the code behind-->
             <Button Grid.Column="1" Clicked="LiveStockDelete_Btn" Text="Delete"/>
         </Grid>
+        <Label x:Name="RecordDeletedInfo" Text="Deleted Record: "/>
     </VerticalStackLayout>
 
 </ContentPage>
