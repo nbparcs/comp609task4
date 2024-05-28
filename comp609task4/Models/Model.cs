@@ -4,8 +4,8 @@
     public int Id { get; set; }
 
     public string? Colour { get; set; }
-    
-    public double Cost {  get; set; }
+
+    public double Cost { get; set; }
     public double Weight { get; set; }
 }
 
@@ -17,7 +17,7 @@ public class Cow : Animals
 
     public override string ToString()
     {
-        return $"{Id,-20}{Cost,-12}{Weight,-12}{Colour,-12}{Milk, -12}";
+        return $"{Id,-20}{Cost,-12}{Weight,-12}{Colour,-12}{Milk,-12}";
     }
 }
 
@@ -26,7 +26,7 @@ public class Cow : Animals
 public class Sheep : Animals
 {
     public string? Animal { get; set; } = "Sheep";
-    public string? Wool { get; set; }
+    public double Wool { get; set; }
     public override string ToString()
     {
         return $"{Id,-20}{Cost,-12}{Weight,-12}{Colour,-12}{Wool,-12}";

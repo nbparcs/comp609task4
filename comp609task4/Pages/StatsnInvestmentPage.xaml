@@ -4,9 +4,66 @@
              x:Class="comp609task4.Pages.StatsnInvestmentPage"
              Title="StatsnInvestmentPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Grid
+        Margin="50,30"
+        ColumnDefinitions="*"
+        ColumnSpacing="20"
+        HorizontalOptions="Start"
+        RowDefinitions="*,*,*,*,*,*,*,*"
+        RowSpacing="20"
+        VerticalOptions="Center">
+            <Label 
+            Text="Animal Statistics"
+            FontSize="Large"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="0"/>
+            
+            
+            <Label 
+            x:Name="GovtTaxLabel"
+            Text="30 days govt tax: "
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="1"/>
+            
+            
+            <Label 
+            x:Name="DailyProfitsLabel"
+            Text="Farm Daily Profits: "
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="2"/>
+            
+            
+            <Label 
+            x:Name="AvgWeightLabel"
+            Text="Avg Weight of all Livestock: "
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="3"/>
+
+            <Label 
+            Text="Based on current Livestock data: "
+            FontSize="Medium"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="4"/>
+
+            <Label 
+            x:Name="SingleCowAvgProfitLabel"
+            FontSize="Small"
+            Margin="40,0"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="5"/>
+
+            <Label 
+            x:Name="SingleSheepAvgProfitLabel"
+            FontSize="Small"
+            Margin="40,0"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="6"/>
+
+
+
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>
