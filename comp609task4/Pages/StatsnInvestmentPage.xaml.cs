@@ -12,6 +12,8 @@ public partial class StatsnInvestmentPage : ContentPage
         AvgWeightLabel.Text = vm.AvgWeightLiveStock();
         SingleCowAvgProfitLabel.Text = vm.CowSingleAvgProfit();
         SingleSheepAvgProfitLabel.Text = vm.SheepSingleAvgProfit();
+        AllSheepsProfitLabel.Text = vm.SheepAvgProfit();
+        AllCowsProfitLabel.Text = vm.CowAvgProfit();
 
 
     }

@@ -90,6 +90,37 @@ public class MainViewModel
 
     }
 
+    public string SheepAvgProfit()
+    {
+        // Retrieve data from the database
+        var sheeps = _database.ReadSheeps();
+
+        double SheepIncome = sheeps.Sum(sheep => sheep.Wool * 6.2);
+        double Cost = sheeps.Sum(sheep => sheep.Cost);
+        double sheepTax = sheeps.Sum(sheep => sheep.Wool * 0.2);
+
+        double profit = SheepIncome - Cost - sheepTax;
+
+
+        return $"Current daily profit of all sheep is ${profit:F2}";
+
+    }
+
+    public string CowAvgProfit()
+    {
+        // Retrieve data from the database
+        var cows = _database.ReadCows();
+
+        double CowIncome = cows.Sum(cow => cow.Milk * 9.4);
+        double Cost = cows.Sum(cow => cow.Cost);
+        double cowTax = cows.Sum(cow => cow.Milk * 0.2);
+
+        double profit = CowIncome - Cost - cowTax;
+
+        return $"Current daily profit of all cow is ${profit:F2}";
+
+    }
+
     public string AvgWeightLiveStock()
     {
         return $"Average weight of all livestocks: {Animals.Average(x => x.Weight):F2}";

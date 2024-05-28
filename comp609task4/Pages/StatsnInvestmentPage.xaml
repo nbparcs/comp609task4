@@ -9,15 +9,15 @@
         ColumnDefinitions="*"
         ColumnSpacing="20"
         HorizontalOptions="Start"
-        RowDefinitions="*,*,*,*,*,*,*,*"
+        RowDefinitions="*,*,*,*,*,*,*,*,*"
         RowSpacing="20"
         VerticalOptions="Center">
+
             <Label 
             Text="Animal Statistics"
             FontSize="Large"
             HorizontalOptions="Start" 
             Grid.Column="0" Grid.Row="0"/>
-            
             
             <Label 
             x:Name="GovtTaxLabel"
@@ -25,7 +25,6 @@
             FontSize="Small"
             HorizontalOptions="Start" 
             Grid.Column="0" Grid.Row="1"/>
-            
             
             <Label 
             x:Name="DailyProfitsLabel"
@@ -61,6 +60,18 @@
             Margin="40,0"
             HorizontalOptions="Start" 
             Grid.Column="0" Grid.Row="6"/>
+
+            <Label 
+            x:Name="AllCowsProfitLabel"
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="7"/>
+
+            <Label 
+            x:Name="AllSheepsProfitLabel"
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="8"/>
 
 
 
