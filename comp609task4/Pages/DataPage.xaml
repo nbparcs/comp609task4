@@ -5,7 +5,8 @@
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"
              x:Class="comp609task4.Pages.DataPage"
              Title="DataPage">
-    
+
+
     <Border Margin="40,40" BackgroundColor="Grey" StrokeShape="RoundRectangle 10">
         <CollectionView 
         BackgroundColor="AntiqueWhite" Margin="2"
@@ -26,7 +27,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
+        </VerticalStackLayout>
 
     </Border>
 </ContentPage>

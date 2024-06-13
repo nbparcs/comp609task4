@@ -6,12 +6,12 @@ public class Database
     public Database() //establish connection to database first
     {
         string dbName = "FarmDataOriginal.db";
-        
+
         string dbPath = Path.Combine(Current.AppDataDirectory, dbName); //GlobalUsings FileSystems
         if (!File.Exists(dbPath))
         {
             using Stream stream = Current.OpenAppPackageFileAsync(dbName).Result; //Open  the db file from the asset folder
-            
+
 
             using MemoryStream memoryStream = new();
             stream.CopyTo(memoryStream);
@@ -28,5 +28,14 @@ public class Database
         var lst2 = _connection.Table<Sheep>().ToList(); //read sheep
         animals.AddRange(lst2);
         return animals;
+    }
+    public List<Cow> ReadCows()
+    {
+        return _connection.Table<Cow>().ToList();
+    }
+
+    public List<Sheep> ReadSheeps()
+    {
+        return _connection.Table<Sheep>().ToList();
     }
 }

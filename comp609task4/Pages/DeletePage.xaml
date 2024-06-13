@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="comp609task4.Pages.DeletePage"
+             Title="DeletePage">
+    <!--Elements will be stacked in verticle order-->
+    <VerticalStackLayout 
+        Margin="0,50" 
+        MaximumWidthRequest="400"
+        Spacing="30">
+
+        <Label 
+            Text="Delete Record"
+            FontSize="20"
+            HorizontalOptions="Start" />
+        <!--Grid is a layout control similar to a table, helps arrange data in rows and columns-->
+        <!--2*,1* means 2 columns, first takes 2/3rd width and second takes 1/3rd-->
+        <Grid ColumnDefinitions="2*, 1*" ColumnSpacing="10">
+            <!--x:Name defines a name for the control to access it later in the code, here it is LiveStockID-->
+            <Entry x:Name="LiveStockID" Placeholder="LiveStock ID"/>
+            <!--Text in clicked is the name for the function in the code behind-->
+            <Button Grid.Column="1" Clicked="LiveStockDelete_Btn" Text="Delete"/>
+        </Grid>
+        <Label x:Name="RecordDeletedInfo" Text="Deleted Record: "/>
+    </VerticalStackLayout>
+
+</ContentPage>

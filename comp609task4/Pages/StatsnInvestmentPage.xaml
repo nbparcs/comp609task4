@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="comp609task4.Pages.StatsnInvestmentPage"
+             Title="StatsnInvestmentPage">
+    <VerticalStackLayout>
+        <Grid
+        Margin="50,30"
+        ColumnDefinitions="*"
+        ColumnSpacing="20"
+        HorizontalOptions="Start"
+        RowDefinitions="*,*,*,*,*,*,*,*,*"
+        RowSpacing="20"
+        VerticalOptions="Center">
+
+            <Label 
+            Text="Animal Statistics"
+            FontSize="Large"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="0"/>
+            
+            <Label 
+            x:Name="GovtTaxLabel"
+            Text="30 days govt tax: "
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="1"/>
+            
+            <Label 
+            x:Name="DailyProfitsLabel"
+            Text="Farm Daily Profits: "
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="2"/>
+            
+            
+            <Label 
+            x:Name="AvgWeightLabel"
+            Text="Avg Weight of all Livestock: "
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="3"/>
+
+            <Label 
+            Text="Based on current Livestock data: "
+            FontSize="Medium"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="4"/>
+
+            <Label 
+            x:Name="SingleCowAvgProfitLabel"
+            FontSize="Small"
+            Margin="40,0"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="5"/>
+
+            <Label 
+            x:Name="SingleSheepAvgProfitLabel"
+            FontSize="Small"
+            Margin="40,0"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="6"/>
+
+            <Label 
+            x:Name="AllCowsProfitLabel"
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="7"/>
+
+            <Label 
+            x:Name="AllSheepsProfitLabel"
+            FontSize="Small"
+            HorizontalOptions="Start" 
+            Grid.Column="0" Grid.Row="8"/>
+
+
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
