@@ -57,7 +57,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\background.png" />
+	  <None Remove="Resources\Images\datapage_icon.svg" />
+	  <None Remove="Resources\Images\deletepage_icon.svg" />
+	  <None Remove="Resources\Images\infopage_icon.svg" />
+	  <None Remove="Resources\Images\insertpage_icon.svg" />
+	  <None Remove="Resources\Images\statspage_icon.svg" />
 	  <None Remove="Resources\Images\table_icon.svg" />
+	  <None Remove="Resources\Images\updatepage_icon.svg" />
 	  <None Remove="Resources\raw\FarmDataOriginal.db" />
 	</ItemGroup>
 
