@@ -201,5 +201,27 @@ public class MainViewModel
         return produceAmountPerDay;
     }
 
+    //public string querybystoretype(string type)
+    //{
+    //    list<store> sts = stores.where(x => x.gettype().name.equals(type)).tolist();
+    //    string results = $"{$"number of {type}:",-30}{sts.count}\n";
+    //    results += $"{"average number of staff:",-30}{sts.average(x => x.numstaff)}";
+    //    return results;
+    //}
+
+    public bool DeleteById(int id)
+    {
+        // find the store with the given id
+        Animals? del_animal = Animals.FirstOrDefault(s => s.Id == id);
+        if (del_animal != null)
+        {
+            // if the store is found and deleted from the database, remove it from the collection
+            if (_database.DeleteItem(del_animal) > 0)
+                if (Animals.Remove(del_animal))
+                    return true;
+        }
+        return false;
+    }
+
 
 }

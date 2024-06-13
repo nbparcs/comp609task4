@@ -37,4 +37,10 @@ public class Database
     {
         return _connection.Table<Sheep>().ToList();
     }
+
+    public int DeleteItem(Animals item)
+    {
+        // Delete the item from the database and return the number of rows affected
+        return _connection.Delete(item);
+    }
 }
