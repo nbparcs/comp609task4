@@ -12,7 +12,6 @@ public class Database
         {
             using Stream stream = Current.OpenAppPackageFileAsync(dbName).Result; //Open  the db file from the asset folder
 
-
             using MemoryStream memoryStream = new();
             stream.CopyTo(memoryStream);
             File.WriteAllBytes(dbPath, memoryStream.ToArray()); //write db data to app directory a

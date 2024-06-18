@@ -8,32 +8,20 @@
 
 
     <Border Margin="40,40" BackgroundColor="Grey" StrokeShape="RoundRectangle 10">
-
-        <VerticalStackLayout>
-            <Grid BackgroundColor="Grey" ColumnDefinitions="*,*,*,*,*,*,*" Padding="10,10">
-                <Label Grid.Column="0" Text="ID" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="1" Text="Cost" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="2" Text="Weight" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="3" Text="Colour" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="4" Text="Milk" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="5" Text="Wool" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="6" Text="Animal" TextColor="White" FontAttributes="Bold"/>
-            </Grid>
-
-            <CollectionView 
-             BackgroundColor="AntiqueWhite"
-             ItemsSource="{Binding Animals, Source={viewmodels:MainViewModel}}" >
+        <CollectionView 
+        BackgroundColor="AntiqueWhite" Margin="2"
+        ItemsSource="{Binding Animals, Source={viewmodels:MainViewModel}}" >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border BackgroundColor="AliceBlue" StrokeShape="Rectangle 15" Padding="10,5">
+                    <Border BackgroundColor="AliceBlue" StrokeShape="Rectangle 15" Padding="10,5" Margin="10">
                         <Grid ColumnDefinitions="*,*,*,*,*,*,*">
-                            <Label Grid.Column="0" Text="{Binding Id}"/>
-                            <Label Grid.Column="1" Text="{Binding Cost}"/>
-                            <Label Grid.Column="2" Text="{Binding Weight}"/>
-                            <Label Grid.Column="3" Text="{Binding Colour}"/>
-                            <Label Grid.Column="4" Text="{Binding Milk}"/>
-                            <Label Grid.Column="5" Text="{Binding Wool}"/>
-                            <Label Grid.Column="6" Text="{Binding Animal}"/>
+                            <Label Grid.Column="0" Text="{Binding Animal}"/>
+                            <Label Grid.Column="1" Text="{Binding Id}"/>
+                            <Label Grid.Column="2" Text="{Binding Cost}"/>
+                            <Label Grid.Column="3" Text="{Binding Weight}"/>
+                            <Label Grid.Column="4" Text="{Binding Colour}"/>
+                            <Label Grid.Column="5" Text="{Binding Milk}"/>
+                            <Label Grid.Column="6" Text="{Binding Wool}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
