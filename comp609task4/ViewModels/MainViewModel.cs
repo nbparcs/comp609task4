@@ -12,10 +12,10 @@ public class MainViewModel
 
     }
 
-    public string GetGeneralStats()
-    {
-        return $"Total animals: {Animals.Count}";
-    }
+    //public string GetGeneralStats()
+    //{
+    //    return $"Total animals: {Animals.Count}";
+    //}
     public string QueryByAnimalType(string type, string color)
     {
         List<Animals> selectedLivestock = Animals.Where(x => x.GetType().Name.Equals(type) && (color == "All" || (x.Colour?.Equals(color) ?? false))).ToList();
@@ -26,7 +26,7 @@ public class MainViewModel
         double governmentTaxPerDay = CalculateGovernmentTaxPerDay(selectedLivestock, type);
         double produceAmountPerDay = CalculateProduceAmountPerDay(selectedLivestock, type);
 
-        string results = $"Number of Livestocks ({type}s in {color} colour): {selectedLivestock.Count} \n";
+        string results = $"No. of Livestock ({type}s in {color} colour): {selectedLivestock.Count} \n";
         results += $"{"Percentage: "}{percentage:F2}%\n";
         results += $"{"Profit/Loss per day: $"}{profitOrLossPerDay:F2}\n";
         results += $"{"Average weight: "}{averageWeight:F2}kg\n";
@@ -36,25 +36,32 @@ public class MainViewModel
         return results;
     }
 
-    public string CalculateProfitAnimal(string type)
-    {
-        List<Animals> selectedLivestock = Animals.Where(x => x.GetType().Name.Equals(type)).ToList();
+    //public string CalculateProfitAnimal(string type)
+    //{
+    //    List<Animals> selectedLivestock = Animals.Where(x => x.GetType().Name.Equals(type)).ToList();
 
-        double percentage = Animals.Count > 0 ? (double)selectedLivestock.Count / Animals.Count * 100 : 0;
-        double profitOrLossPerDay = CalculateProfitOrLossPerDay(selectedLivestock, type);
-        double averageWeight = selectedLivestock.Any(x => x.Weight != 0) ? selectedLivestock.Where(x => x.Weight != 0).Average(x => x.Weight) : 0;
-        double governmentTaxPerDay = CalculateGovernmentTaxPerDay(selectedLivestock, type);
-        double produceAmountPerDay = CalculateProduceAmountPerDay(selectedLivestock, type);
+    //    double percentage = Animals.Count > 0 ? (double)selectedLivestock.Count / Animals.Count * 100 : 0;
+    //    double profitOrLossPerDay = CalculateProfitOrLossPerDay(selectedLivestock, type);
+    //    double averageWeight = selectedLivestock.Any(x => x.Weight != 0) ? selectedLivestock.Where(x => x.Weight != 0).Average(x => x.Weight) : 0;
+    //    double governmentTaxPerDay = CalculateGovernmentTaxPerDay(selectedLivestock, type);
+    //    double produceAmountPerDay = CalculateProduceAmountPerDay(selectedLivestock, type);
 
-        string results = $"Number of Livestocks ({type}s in colour): {selectedLivestock.Count} \n";
-        results += $"{"Percentage: "}{percentage:F2}%\n";
-        results += $"{"Profit/Loss per day: $"}{profitOrLossPerDay:F2}\n";
-        results += $"{"Average weight: "}{averageWeight:F2}kg\n";
-        results += $"{"Government tax paid per day: $"}{governmentTaxPerDay:F2}\n";
-        results += $"{"Produce amount per day: $"}{produceAmountPerDay:F2}\n";
+    //    string results = $"Number of Livestocks ({type}s in colour): {selectedLivestock.Count} \n";
+    //    results += $"{"Percentage: "}{percentage:F2}%\n";
+    //    results += $"{"Profit/Loss per day: $"}{profitOrLossPerDay:F2}\n";
+    //    results += $"{"Average weight: "}{averageWeight:F2}kg\n";
+    //    results += $"{"Government tax paid per day: $"}{governmentTaxPerDay:F2}\n";
+    //    results += $"{"Produce amount per day: $"}{produceAmountPerDay:F2}\n";
 
-        return results;
-    }
+    //    //string results = $"Number of Livestocks ({type}s in colour): {selectedLivestock.Count} \n";
+    //    //results += $"{"Percentage: "}{percentage:F2}%\n";
+    //    //results += $"{"Profit/Loss per day: $"}{profitOrLossPerDay:F2}\n";
+    //    //results += $"{"Average weight: "}{averageWeight:F2}kg\n";
+    //    //results += $"{"Government tax paid per day: $"}{governmentTaxPerDay:F2}\n";
+    //    //results += $"{"Produce amount per day: $"}{produceAmountPerDay:F2}\n";
+
+    //    return results;
+    //}
 
     private double CalculateProfitOrLossPerDay(List<Animals> Animals, string type)
      {
@@ -77,7 +84,7 @@ public class MainViewModel
     {
         var cows = _database.ReadCows();
         var sheeps = _database.ReadSheeps();
-        double cowTax = cows.Sum(cow => cow.Weight * 0.2); // Calculate total tax for cows (sum of milk * 0.2 * 30)
+        double cowTax = cows.Sum(cow => cow.Weight * 0.2); //Calculate total tax for cows (sum of milk * 0.2 * 30)
         double sheepTax = sheeps.Sum(sheep => sheep.Weight * 0.2); // Calculate total tax for sheep (sum of wool * 0.2 * 30)
         double totalTax = cowTax + sheepTax; // Sum the taxes from both cows and sheep
         return $"${totalTax * 30:F2}";  // Return the result as a formatted string
@@ -119,7 +126,6 @@ public class MainViewModel
         int numberOfSheeps = sheeps.Count;
         double profitPerSheep = numberOfSheeps > 0 ? profit / numberOfSheeps : 0;
         return $"${profitPerSheep:F2}";
-
     }
 
     public string SheepAvgProfit()
@@ -134,7 +140,7 @@ public class MainViewModel
 
     public string CowAvgProfit()
     {
-        var cows = _database.ReadCows(); // Get data from the database
+        var cows = _database.ReadCows(); //Get data from the database
         double CowIncome = cows.Sum(cow => cow.Milk * 9.4);
         double Cost = cows.Sum(cow => cow.Cost);
         double cowTax = cows.Sum(cow => cow.Weight * 0.2);
@@ -148,8 +154,8 @@ public class MainViewModel
 
         if (livestockWithWeight.Count > 0)
         {       
-            double averageWeight = livestockWithWeight.Average(x => x.Weight); // Get the average weight
-            return $"{averageWeight:F2}";
+            double averageWeight = livestockWithWeight.Average(x => x.Weight); //Getting the average weight
+            return $"{averageWeight:F2}kg";
         }
         else
         {
@@ -171,7 +177,6 @@ public class MainViewModel
             Console.WriteLine($"{"Sheep",-13}{anml.Id,-12}{anml.Cost,-20}{anml.Weight,-12}{anml.Colour,-12}");
         }
     }
-
     private double CalculateGovernmentTaxPerDay(List<Animals> livestock, string type)
     {
         double taxPerDay = 0;
@@ -200,28 +205,39 @@ public class MainViewModel
         }
         return produceAmountPerDay;
     }
-
-    //public string querybystoretype(string type)
-    //{
-    //    list<store> sts = stores.where(x => x.gettype().name.equals(type)).tolist();
-    //    string results = $"{$"number of {type}:",-30}{sts.count}\n";
-    //    results += $"{"average number of staff:",-30}{sts.average(x => x.numstaff)}";
-    //    return results;
-    //}
-
     public bool DeleteById(int id)
     {
-        // find the store with the given id
-        Animals? del_animal = Animals.FirstOrDefault(s => s.Id == id);
+        
+        Animals? del_animal = Animals.FirstOrDefault(s => s.Id == id); //finding the store with the given id
         if (del_animal != null)
-        {
-            // if the store is found and deleted from the database, remove it from the collection
-            if (_database.DeleteItem(del_animal) > 0)
+        {  
+            if (_database.DeleteItem(del_animal) > 0) //if found and deleted from the database, remove it from the collection
                 if (Animals.Remove(del_animal))
                     return true;
         }
         return false;
     }
+    public string CalculateProfitEstimate(int numberOfNewLivestock, string type)
+    {
+        double currentAvgProfitPerAnimal;
+ 
+        if (type == "Cow") //Current average profit per animal based on the type
+        {
+            var currentAvgProfit = CowSingleAvgProfit();
+            currentAvgProfitPerAnimal = double.Parse(currentAvgProfit.TrimStart('$'));
+        }
+        else if (type == "Sheep")
+        {
+            var currentAvgProfit = SheepSingleAvgProfit();
+            currentAvgProfitPerAnimal = double.Parse(currentAvgProfit.TrimStart('$'));
+        }
+        else
+        {
+            return "Invalid livestock type. Please specify 'Cow' or 'Sheep'.";
+        }
 
+        double estimatedAdditionalProfit = currentAvgProfitPerAnimal * numberOfNewLivestock; //Calculate the estimated additional daily profit
+        return $"${estimatedAdditionalProfit:F2}";
+    }
 
 }

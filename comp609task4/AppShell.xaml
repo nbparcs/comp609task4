@@ -7,11 +7,32 @@
     xmlns:Pages="clr-namespace:comp609task4.Pages"
     
     Shell.FlyoutBehavior="Disabled"
-    Title="comp609task4">
-    
+    Title="comp609task4"
+    Shell.TabBarBackgroundColor="#FF5E0D"
+    Shell.TabBarForegroundColor="#ffffff"
+    Shell.TabBarUnselectedColor="#FFCBB1"
+    Shell.TabBarTitleColor="#ffffff">
+
+
     <TabBar>
-        <Tab Title="Data Listing" Icon="table_icon.png">
+        <Tab Title="Data Listing" Icon="datapage_icon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:DataPage}"/>
+        </Tab>
+
+        <Tab Title="Stats and Investment" IsVisible="True" Icon="statspage_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:StatsnInvestmentPage}"/>
+        </Tab>
+        <Tab Title="LiveStock Info" IsVisible="True" Icon="infopage_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:InfoPage}"/>
+        </Tab>
+        <Tab Title="Insert LiveStock" IsVisible="True" Icon="insertpage_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:InsertPage}"/>
+        </Tab>
+        <Tab Title="Delete LiveStock" IsVisible="True" Icon="deletepage_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:DeletePage}"/>
+        </Tab>
+        <Tab Title="Update LiveStock" IsVisible="True" Icon="updatepage_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:UpdatePage}"/>
         </Tab>
 
     </TabBar>
