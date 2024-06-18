@@ -15,8 +15,6 @@ public partial class StatsnInvestmentPage : ContentPage
         AllSheepsProfitLabel.Text = vm.SheepAvgProfit();
         AllCowsProfitLabel.Text = vm.CowAvgProfit();
 
-
     }
-
 
 }
