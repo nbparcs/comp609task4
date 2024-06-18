@@ -11,8 +11,24 @@
     <VerticalStackLayout Margin="0,20" MaximumWidthRequest="800" Spacing="30" Padding="20,20" BackgroundColor="#FBF2F0">
         <Label Text="Add New Animals" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
 
+        <Picker
+            x:Name="AnimalPicker"
+            Title="Select animal type"
+            Grid.Row="1"
+            Grid.Column="0"
+            BackgroundColor="Aquamarine"
+            HorizontalOptions="Start"
+            SelectedIndexChanged="OnAnimalTypeSelectionChange"
+            TitleColor="Blue"
+            WidthRequest="300" >
+            <Picker.Items>
+                <x:String>Cow</x:String>
+                <x:String>Sheep</x:String>
+            </Picker.Items>
+        </Picker>
+
         <Grid Padding="10" MaximumWidthRequest="500" RowDefinitions="50, 50, 50, 50, 50,50,50,50, *" RowSpacing="10">
-            <Entry Grid.Row="1" x:Name="LiveStockType" Placeholder="Enter LiveStock Type(Cow/Sheep)" />
+            
             <Entry Grid.Row="2" x:Name="LiveStockColour" Placeholder="Enter LiveStock Colour" />
             <Entry Grid.Row="3" x:Name="LiveStockCost" Placeholder="Enter LiveStock Cost" />
             <Entry Grid.Row="4" x:Name="LiveStockWeight" Placeholder="Enter LiveStock Weight" />

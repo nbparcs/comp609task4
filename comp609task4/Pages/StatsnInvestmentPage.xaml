@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:models="clr-namespace:comp609task4.Models"
@@ -5,7 +6,7 @@
              x:Class="comp609task4.Pages.StatsnInvestmentPage">
     <Grid>
         <Image Source="background.png" Aspect="AspectFill"/>
-            <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="FillAndExpand">
 
             <Label Text="STATISTICS AND INVESTMENT" VerticalOptions="Center" HorizontalOptions="Center" FontSize="40" FontAttributes="Bold" FontFamily="Inter" Margin="0,100,0,10" TextColor="#FF5E0D"/>
             <VerticalStackLayout Margin="0,0" MaximumWidthRequest="800" Spacing="10" BackgroundColor="#FFFFFF">
@@ -29,27 +30,27 @@
 
                 </Grid>
 
-             <Grid Margin="10,0" ColumnDefinitions="Auto,Auto,*,*" ColumnSpacing="20" HorizontalOptions="Start" RowDefinitions="Auto" RowSpacing="20" VerticalOptions="Center">
-                <Label Text="Select Livestock Type:" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" />
+                <Grid Margin="10,0" ColumnDefinitions="Auto,Auto,*,*" ColumnSpacing="20" HorizontalOptions="Start" RowDefinitions="Auto" RowSpacing="20" VerticalOptions="Center">
+                    <Label Text="Select Livestock Type:" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" />
                     <Picker x:Name="LivestockTypePicker" Title="Select Animal Type" Background="#FFFFFF" HorizontalOptions="Start" HeightRequest="70" Grid.Column="1" Grid.Row="0">
                         <Picker.Items>
                             <x:String>Cow</x:String>
                             <x:String>Sheep</x:String>
                         </Picker.Items>
                     </Picker>
-                <Label Text="Select Livestock Type:" HorizontalOptions="Start" Grid.Column="2" Grid.Row="0" />
-                    <Border Background="#FFFFFF" Grid.Column="3" Grid.Row="0">
-                        <Entry x:Name="AnimalInvestment" Placeholder="Enter amount "/>
-                    </Border>
-            </Grid>
+                    <Label Text="Select Livestock Type:" HorizontalOptions="Start" Grid.Column="2" Grid.Row="0" />
+                        <Border Background="#FFFFFF" Grid.Column="3" Grid.Row="0">
+                        <Entry x:Name="AnimalInvestment" Placeholder="Enter number "/>
+                        </Border>
+                </Grid>
                 
-            <Grid ColumnDefinitions="1*" ColumnSpacing="10">
+                <Grid ColumnDefinitions="1*" ColumnSpacing="10">
                     <Button Grid.Column="0" Clicked="CalculateProfitEstimate_Clicked" Text="CALCULATE" BackgroundColor="#FF5E0D" />
-            </Grid>
+                </Grid>
                 
-            <Grid ColumnDefinitions="1*" ColumnSpacing="10">
+                <Grid ColumnDefinitions="1*" ColumnSpacing="10">
                     <Label x:Name="ProfitEstimate" Text="Estimated Daily Profit:" />
-            </Grid>
+                </Grid>
 
 
 

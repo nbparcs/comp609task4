@@ -20,7 +20,7 @@ namespace comp609task4
 #endif
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddTransient<DataPage>();
-            builder.Services.AddTransient<StatsnInvestmentPage>();
+            //builder.Services.AddTransient<StatsnInvestmentPage>();
             builder.Services.AddTransient<InfoPage>();
             builder.Services.AddTransient<InsertPage>();
             builder.Services.AddTransient<DeletePage>();

@@ -16,17 +16,19 @@ public partial class StatsnInvestmentPage : ContentPage
         AllCowsProfitLabel.Text = vm.CowAvgProfit();
     }
 
-    /**private void CalculateProfitEstimate_Clicked(object sender, EventArgs e)
+
+
+    private void CalculateProfitEstimate_Clicked(object sender, EventArgs e)
     {
         if (LivestockTypePicker.SelectedItem != null)
         {
             string type = LivestockTypePicker.SelectedItem.ToString();
 
-            ProfitEstimate.Text = vm.CalculateProfitEstimate(type);
+            ProfitEstimate.Text = vm.CalculateProfitEstimate(type, AnimalInvestment.Text);
         }
         else
         {
             DisplayAlert("Error", "Please select an animal type or color.", "OK");
         }
-    }**/
+    }
 }

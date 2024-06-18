@@ -57,12 +57,13 @@ public class MainViewModel
     }
 
     private double CalculateProfitOrLossPerDay(List<Animals> Animals, string type)
-     {
+    {
         double incomePerDay = 0;
         double costPerDay = Animals.Sum(x => x.Cost);
         double governmentTaxPerDay = CalculateGovernmentTaxPerDay(Animals, type);
 
-        if (type == "Cow") { 
+        if (type == "Cow")
+        {
             incomePerDay += Animals.Sum(x => ((Cow)x).Milk * 9.4);
         }
         else if (type == "Sheep")
@@ -71,7 +72,31 @@ public class MainViewModel
         }
 
         return incomePerDay - governmentTaxPerDay - costPerDay;
-     }
+    }
+
+    public string CalculateProfitEstimate(string type, string number)
+    {
+        if (type == "Cow")
+        {
+            double.TryParse(CowSingleAvgProfit().Replace("$", ""), out double singleCowProfit);
+            double.TryParse(number.Replace("$", ""), out double numberOfInvestment);
+            double InvestmentEst = singleCowProfit * numberOfInvestment;
+            return $"${InvestmentEst:F2}";
+        }
+        else if (type == "Sheep")
+        {
+            double.TryParse(CowSingleAvgProfit().Replace("$", ""), out double singleSheepProfit);
+            double.TryParse(number.Replace("$", ""), out double numberOfInvestment);
+            double InvestmentEst = singleSheepProfit * numberOfInvestment;
+            return $"${InvestmentEst:F2}";
+        }
+        else
+        {
+            return "Incorrect Values Entered";
+        }
+
+
+    }
 
     public string GetTotalTax()
     {
@@ -147,7 +172,7 @@ public class MainViewModel
         var livestockWithWeight = Animals.Where(x => x.Weight != 0).ToList();
 
         if (livestockWithWeight.Count > 0)
-        {       
+        {
             double averageWeight = livestockWithWeight.Average(x => x.Weight); // Get the average weight
             return $"{averageWeight:F2}";
         }
@@ -221,6 +246,75 @@ public class MainViewModel
                     return true;
         }
         return false;
+    }
+
+
+    public bool InsertAnimal(string animalType, string color, string costText, string weightText, string milkText, string woolText, out string result)
+    {
+        result = string.Empty;
+        double cost, weight, milk = 0, wool = 0;
+
+        // Validate common fields
+        if (string.IsNullOrWhiteSpace(animalType) || string.IsNullOrWhiteSpace(color) ||
+            !double.TryParse(costText, out cost) || !double.TryParse(weightText, out weight))
+        {
+            result = "Invalid input: Please ensure all required fields are filled correctly.";
+            return false;
+        }
+
+        // Additional validation based on animal type
+        if (animalType == "Cow" && !double.TryParse(milkText, out milk))
+        {
+            result = "Invalid input: Please enter a valid number for milk produced.";
+            return false;
+        }
+        else if (animalType == "Sheep" && !double.TryParse(woolText, out wool))
+        {
+            result = "Invalid input: Please enter a valid number for wool produced.";
+            return false;
+        }
+
+        // Create the new animal object based on the selected type
+        Animals newAnimal;
+        if (animalType == "Cow")
+        {
+            newAnimal = new Cow
+            {
+                Colour = color,
+                Cost = cost,
+                Weight = weight,
+                Milk = milk
+            };
+        }
+        else if (animalType == "Sheep")
+        {
+            newAnimal = new Sheep
+            {
+                Colour = color,
+                Cost = cost,
+                Weight = weight,
+                Wool = wool
+            };
+        }
+        else
+        {
+            result = "Unknown animal type.";
+            return false;
+        }
+
+        // Insert the new animal into the database
+        var inserted = _database.InsertItem(newAnimal);
+        if (inserted > 0)
+        {
+            Animals.Add(newAnimal); // Add the new animal to the collection
+            result = $"Record added: {newAnimal}";
+            return true;
+        }
+        else
+        {
+            result = "Failed to insert record into the database.";
+            return false;
+        }
     }
 
 

@@ -43,4 +43,8 @@ public class Database
         // Delete the item from the database and return the number of rows affected
         return _connection.Delete(item);
     }
+    public int InsertItem(Animals animal)
+    {
+        return _connection.Insert(animal);
+    }
 }
