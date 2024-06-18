@@ -4,57 +4,76 @@
              xmlns:models="clr-namespace:comp609task4.Models"
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"
              x:Class="comp609task4.Pages.StatsnInvestmentPage">
+    
     <Grid>
         <Image Source="background.png" Aspect="AspectFill"/>
         <StackLayout VerticalOptions="FillAndExpand">
 
-            <Label Text="STATISTICS AND INVESTMENT" VerticalOptions="Center" HorizontalOptions="Center" FontSize="40" FontAttributes="Bold" FontFamily="Inter" Margin="0,100,0,10" TextColor="#FF5E0D"/>
-            <VerticalStackLayout Margin="0,0" MaximumWidthRequest="800" Spacing="10" BackgroundColor="#FFFFFF">
-                    
-                <Grid Margin="10,20" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="20" HorizontalOptions="Start" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="20" VerticalOptions="Center">
-                    
-                    <Label Text="30 days Government Tax:" HorizontalOptions="Start" Grid.Column="0" Grid.Row="1"/>
-                    <Label x:Name="GovtTaxLabel" HorizontalOptions="Start" Grid.Column="1" Grid.Row="1" />
+            <Label Text="STATISTICS AND INVESTMENT" VerticalOptions="Center" HorizontalOptions="Center" FontSize="40" FontAttributes="Bold" FontFamily="Inter" Margin="0,100,0,0" TextColor="#FF5E0D"/>
 
-                    <Label Text="Farm Daily Profits:" HorizontalOptions="Start" Grid.Column="0" Grid.Row="2"/>
-                    <Label x:Name="DailyProfitsLabel" HorizontalOptions="Start" Grid.Column="1" Grid.Row="2" />
+            <VerticalStackLayout Margin="0,20" MaximumWidthRequest="900" Spacing="15" BackgroundColor="#FFFFFF">
 
-                    <Label Text="Avg. Weight of all Livestock:" HorizontalOptions="Start" Grid.Column="0" Grid.Row="3"/>
-                    <Label x:Name="AvgWeightLabel" HorizontalOptions="Start" Grid.Column="1" Grid.Row="3" />
+                <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,*">
+                    <!-- Row 0, Column 0 -->
 
-                    <Label Text="All Cows Profit:" HorizontalOptions="Start" Grid.Column="0" Grid.Row="7"/>
-                    <Label x:Name="AllCowsProfitLabel" HorizontalOptions="Start" Grid.Column="1" Grid.Row="7" />
-
-                    <Label Text="All Sheeps Profit:" HorizontalOptions="Start" Grid.Column="0" Grid.Row="8"/>
-                    <Label x:Name="AllSheepsProfitLabel" HorizontalOptions="Start" Grid.Column="1" Grid.Row="8" />
-
-                </Grid>
-
-                <Grid Margin="10,0" ColumnDefinitions="Auto,Auto,*,*" ColumnSpacing="20" HorizontalOptions="Start" RowDefinitions="Auto" RowSpacing="20" VerticalOptions="Center">
-                    <Label Text="Select Livestock Type:" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" />
-                    <Picker x:Name="LivestockTypePicker" Title="Select Animal Type" Background="#FFFFFF" HorizontalOptions="Start" HeightRequest="70" Grid.Column="1" Grid.Row="0">
-                        <Picker.Items>
-                            <x:String>Cow</x:String>
-                            <x:String>Sheep</x:String>
-                        </Picker.Items>
-                    </Picker>
-                    <Label Text="Select Livestock Type:" HorizontalOptions="Start" Grid.Column="2" Grid.Row="0" />
-                        <Border Background="#FFFFFF" Grid.Column="3" Grid.Row="0">
-                        <Entry x:Name="AnimalInvestment" Placeholder="Enter number "/>
-                        </Border>
-                </Grid>
+                    <Grid Grid.Row="0" Grid.Column="0" Padding="30,36,0,0" BackgroundColor="#FFFFFF" ColumnDefinitions="Auto,Auto,Auto,Auto" HorizontalOptions="FillAndExpand" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="4">
+                        <Label Text="CALCULATE INVESTMENT" FontSize="15" FontAttributes="Bold" FontFamily="Inter" Grid.Row="0" Grid.Column="0"/>
+                        <BoxView Grid.Row="1" Grid.Column="0" HeightRequest="1.2" BackgroundColor="#000000" WidthRequest="390"></BoxView>
+                        <Label Grid.Row="2" Grid.Column="0" Text="Calculate the potential earnings from investing in " />
+                        <Label Grid.Row="3" Grid.Column="0" Text="additional livestock." />
+                    </Grid>
                 
-                <Grid ColumnDefinitions="1*" ColumnSpacing="10">
-                    <Button Grid.Column="0" Clicked="CalculateProfitEstimate_Clicked" Text="CALCULATE" BackgroundColor="#FF5E0D" />
-                </Grid>
+                    <!-- Row 0, Column 1 -->
                 
-                <Grid ColumnDefinitions="1*" ColumnSpacing="10">
-                    <Label x:Name="ProfitEstimate" Text="Estimated Daily Profit:" />
+                    <Grid Grid.Row="0" Grid.Column="1" Padding="30,30,0,0" BackgroundColor="#F4F4F4" ColumnDefinitions="Auto,Auto" HorizontalOptions="FillAndExpand" RowDefinitions="Auto,Auto" RowSpacing="10">                      
+                        <Label Text="LIVESTOCK STATS" FontSize="15" FontAttributes="Bold" FontFamily="Inter" Grid.Row="0" Grid.Column="1"/>
+                        <BoxView Grid.Row="1" Grid.Column="1" HeightRequest="1.2" BackgroundColor="#323232" WidthRequest="390"></BoxView>                       
+                    </Grid>
+                
+                    <!-- LEFT CONTANT -->
+
+                    <Grid ColumnSpacing="0" Grid.Row="1" Grid.Column="0" Padding="40,0,0,50" BackgroundColor="#FFFFFF"  ColumnDefinitions="Auto,Auto,Auto,Auto,Auto" HorizontalOptions="FillAndExpand" RowDefinitions="Auto, Auto, Auto, Auto, 45, Auto, Auto" RowSpacing="20">
+                        <Picker x:Name="LivestockTypePicker" Title="Select Livestock Type" Grid.Column="0" Grid.Row="2" HorizontalOptions="Start" BackgroundColor="#F4F4F4">
+                            <Picker.Items>
+                                <x:String>Cow</x:String>
+                                <x:String>Sheep</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                        <Entry x:Name="NumberOfNewLivestockEntry" HorizontalOptions="Start" Grid.Column="0" BackgroundColor="#F4F4F4" Grid.Row="3" Placeholder="Enter number of new livestock" Keyboard="Numeric" WidthRequest="270"/>
+
+                        <Button Grid.Column="0" Grid.Row="4" Clicked="CalculateProfitEstimate_Clicked" Text="CALCULATE" HorizontalOptions="Start" BackgroundColor="#FF5E0D" />
+                        <Label  Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="5" HorizontalOptions="Start" Text="Estimated Daily Profit: "/>
+                        <Label  Grid.Column="1" Grid.Row="5" x:Name="ProfitEstimate" HorizontalOptions="Start" TextColor="#FF5E0D" FontSize="20" FontAttributes="Bold" />
+                    </Grid>
+
+
+                    <!-- Row 1, Column 1 -->
+
+                    <Grid Grid.Row="1" Grid.Column="1" Padding="30,30,0,20" ColumnDefinitions="315,Auto" HorizontalOptions="FillAndExpand" BackgroundColor="#F4F4F4" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="10">
+                        <Label Grid.Column="0" Grid.Row="1" Text="30 days Government Tax:"  HorizontalOptions="Start" />
+                        <Label Grid.Column="1" Grid.Row="1" x:Name="GovtTaxLabel" HorizontalOptions="Start" FontAttributes="Bold"  />
+
+                        <Label Text="Farm Daily Profits:"  HorizontalOptions="Start" Grid.Column="0" Grid.Row="2"/>
+                        <Label x:Name="DailyProfitsLabel" HorizontalOptions="Start" FontAttributes="Bold" Grid.Column="1" Grid.Row="2" />
+
+                        <Label Text="Avg. Weight of all Livestock:"  HorizontalOptions="Start" Grid.Column="0" Grid.Row="3"/>
+                        <Label x:Name="AvgWeightLabel" HorizontalOptions="Start" FontAttributes="Bold" Grid.Column="1" Grid.Row="3" />
+
+                        <Label Text="Single Cow Daily Profit:"  HorizontalOptions="Start" Grid.Column="0" Grid.Row="4"/>
+                        <Label x:Name="SingleCowAvgProfitLabel" HorizontalOptions="Start" FontAttributes="Bold" Grid.Column="1" Grid.Row="4" />
+
+                        <Label Text="Single Sheep Daily Profit:"  HorizontalOptions="Start" Grid.Column="0" Grid.Row="5"/>
+                        <Label x:Name="SingleSheepAvgProfitLabel" HorizontalOptions="Start" FontAttributes="Bold" Grid.Column="1" Grid.Row="5" />
+
+                        <Label Text="All Cows Daily Profit:"  HorizontalOptions="Start" Grid.Column="0" Grid.Row="6"/>
+                        <Label x:Name="AllCowsProfitLabel" HorizontalOptions="Start" FontAttributes="Bold" Grid.Column="1" Grid.Row="6" />
+
+                        <Label Text="All Sheeps Daily Profit:"  HorizontalOptions="Start" Grid.Column="0" Grid.Row="7"/>
+                        <Label x:Name="AllSheepsProfitLabel" HorizontalOptions="Start" FontAttributes="Bold" Grid.Column="1" Grid.Row="7" /> 
+                    </Grid>
                 </Grid>
-
-
-
-
+       
             </VerticalStackLayout>
         </StackLayout>
     </Grid>

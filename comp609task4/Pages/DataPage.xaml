@@ -1,45 +1,115 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:comp609task4.Models"
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"
-             x:Class="comp609task4.Pages.DataPage"
-             Title="DataPage">
+             x:Class="comp609task4.Pages.DataPage">
+    <Grid>
+        <Image Source="background.png" Aspect="AspectFill"/>
+            <StackLayout VerticalOptions="FillAndExpand">
+
+            <VerticalStackLayout Padding="0,20" MaximumWidthRequest="1200" Spacing="15" BackgroundColor="#FFFFFF" Margin="0,90,0,0">
+                <Grid RowDefinitions="Auto,*" ColumnDefinitions="600,*"> 
+                    
+                    <!-- LEFT -->
+
+                    <Grid Grid.Row="0" Grid.Column="0" Padding="30,36,0,0" BackgroundColor="#FFFFFF" ColumnDefinitions="Auto" HorizontalOptions="FillAndExpand" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="4">
+                        <Label Grid.Row="0" Grid.Column="0" Text="WELCOME TO" FontSize="15" FontAttributes="Bold" FontFamily="Inter" />
+                        <Label Grid.Row="1" Grid.Column="0" Text="Livestock" TextColor="#FF5E0D" FontFamily="Inter" FontSize="47"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="Management System" TextColor="#FF5E0D" FontFamily="Inter" FontSize="47"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="- Comp609" TextColor="#323232" FontFamily="Inter" FontSize="47" />
+                        <Label Grid.Row="4" Grid.Column="0" Text="An application using C# and .NET MAUI with an all-in-one tool" FontSize="15" FontAttributes="Bold" FontFamily="Inter" />
+                        <Label Grid.Row="5" Grid.Column="0" Text="for calculations and data management." FontSize="15" FontAttributes="Bold" FontFamily="Inter" />
+                        <Label Grid.Row="6" Grid.Column="0" Text="Calculate taxes" FontSize="15" FontFamily="Inter" />
+
+                    </Grid>
+
+                    <!-- END LEFT -->
+                    
+                    <!-- RIGHT -->
+                    <Grid Grid.Row="0" Grid.Column="1" Padding="30,10,30,0" BackgroundColor="#F4F4F4" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" RowDefinitions="Auto" RowSpacing="10">
+                        <CollectionView BackgroundColor="#ffffff" Margin="0,20" ItemsSource="{Binding Animals, Source={viewmodels:MainViewModel}}">
+                            <CollectionView.Header>
+                                <Border StrokeShape="RoundRectangle 10,10,0,0" StrokeThickness="0">
+                                    <Grid ColumnDefinitions="*,*,*,*,*,*,*" Padding="10,10,10,10" BackgroundColor="#FF5E0D">
+                                        <Label Grid.Column="0" Text="TYPE" FontAttributes="Bold" TextColor="#ffffff"/>
+                                        <Label Grid.Column="1" Text="ID" FontAttributes="Bold" TextColor="#ffffff"/>
+                                        <Label Grid.Column="2" Text="COST" FontAttributes="Bold" TextColor="#ffffff"/>
+                                        <Label Grid.Column="3" Text="WEIGHT" FontAttributes="Bold" TextColor="#ffffff"/>
+                                        <Label Grid.Column="4" Text="COLOUR" FontAttributes="Bold" TextColor="#ffffff"/>
+                                        <Label Grid.Column="5" Text="MILK" FontAttributes="Bold" TextColor="#ffffff"/>
+                                        <Label Grid.Column="6" Text="WOOL" FontAttributes="Bold" TextColor="#ffffff"/>
+                                    </Grid>
+                                </Border>
+                            </CollectionView.Header>
 
 
-    <Border Margin="40,40" BackgroundColor="Grey" StrokeShape="RoundRectangle 10">
-
-        <VerticalStackLayout>
-            <Grid BackgroundColor="Grey" ColumnDefinitions="*,*,*,*,*,*,*" Padding="10,10">
-                <Label Grid.Column="0" Text="ID" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="1" Text="Cost" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="2" Text="Weight" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="3" Text="Colour" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="4" Text="Milk" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="5" Text="Wool" TextColor="White" FontAttributes="Bold"/>
-                <Label Grid.Column="6" Text="Animal" TextColor="White" FontAttributes="Bold"/>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Padding="10,5" Margin="40,40" BorderColor="#000000" BackgroundColor="#F5F5F5" CornerRadius="0">
+                                        <Grid ColumnDefinitions="*,*,*,*,*,*,*">
+                                            <Label Grid.Column="0" Text="{Binding Type}" />
+                                            <Label Grid.Column="1" Text="{Binding Id}"/>
+                                            <Label Grid.Column="2" Text="{Binding Cost}"/>
+                                            <Label Grid.Column="3" Text="{Binding Weight}"/>
+                                            <Label Grid.Column="4" Text="{Binding Colour}"/>
+                                            <Label Grid.Column="5" Text="{Binding Milk}"/>
+                                            <Label Grid.Column="6" Text="{Binding Wool}"/>
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                    <!-- END RIGHT -->
+        
             </Grid>
+                </VerticalStackLayout>
+        </StackLayout>
+    </Grid>
 
-            <CollectionView 
-             BackgroundColor="AntiqueWhite"
-             ItemsSource="{Binding Animals, Source={viewmodels:MainViewModel}}" >
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border BackgroundColor="AliceBlue" StrokeShape="Rectangle 15" Padding="10,5">
-                            <Grid ColumnDefinitions="*,*,*,*,*,*,*">
-                                <Label Grid.Column="0" Text="{Binding Id}"/>
-                                <Label Grid.Column="1" Text="{Binding Cost}"/>
-                                <Label Grid.Column="2" Text="{Binding Weight}"/>
-                                <Label Grid.Column="3" Text="{Binding Colour}"/>
-                                <Label Grid.Column="4" Text="{Binding Milk}"/>
-                                <Label Grid.Column="5" Text="{Binding Wool}"/>
-                                <Label Grid.Column="6" Text="{Binding Animal}"/>
+    <!--<Grid>
+        <Image Source="background.png" Aspect="AspectFill"/>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Label Text="Welcome" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" FontFamily="Inter" Margin="0,90,0,0" TextColor="#323232"/>
+            <Label Text="to Livestock Management System - Comp 609"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="13" FontFamily="Inter" Margin="0,10,0,0" TextColor="#323232"/>
+            <Label Text="LIVESTOCK DATA"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="40" 
+               FontAttributes="Bold" FontFamily="Inter" Margin="0,80,0,0" TextColor="#FF5E0D"/>
+
+            <VerticalStackLayout Padding="0,20" MaximumWidthRequest="900" Spacing="15" BackgroundColor="#FFFFFF">
+                <CollectionView BackgroundColor="#ffffff" Margin="0,20" ItemsSource="{Binding Animals, Source={viewmodels:MainViewModel}}">
+                    <CollectionView.Header>
+                        <Border StrokeShape="RoundRectangle 10,10,0,0" StrokeThickness="0">
+                            <Grid ColumnDefinitions="*,*,*,*,*,*,*" Padding="10,10,10,10" BackgroundColor="#FF5E0D">
+                                <Label Grid.Column="0" Text="TYPE" FontAttributes="Bold" TextColor="#ffffff"/>
+                                <Label Grid.Column="1" Text="ID" FontAttributes="Bold" TextColor="#ffffff"/>
+                                <Label Grid.Column="2" Text="COST" FontAttributes="Bold" TextColor="#ffffff"/>
+                                <Label Grid.Column="3" Text="WEIGHT" FontAttributes="Bold" TextColor="#ffffff"/>
+                                <Label Grid.Column="4" Text="COLOUR" FontAttributes="Bold" TextColor="#ffffff"/>
+                                <Label Grid.Column="5" Text="MILK" FontAttributes="Bold" TextColor="#ffffff"/>
+                                <Label Grid.Column="6" Text="WOOL" FontAttributes="Bold" TextColor="#ffffff"/>
                             </Grid>
                         </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </VerticalStackLayout>
+                    </CollectionView.Header>
 
-    </Border>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10,5" Margin="40,40" BorderColor="#000000" BackgroundColor="#F5F5F5" CornerRadius="0">
+                                <Grid ColumnDefinitions="*,*,*,*,*,*,*">
+                                    <Label Grid.Column="0" Text="{Binding Type}" />
+                                    <Label Grid.Column="1" Text="{Binding Id}"/>
+                                    <Label Grid.Column="2" Text="{Binding Cost}"/>
+                                    <Label Grid.Column="3" Text="{Binding Weight}"/>
+                                    <Label Grid.Column="4" Text="{Binding Colour}"/>
+                                    <Label Grid.Column="5" Text="{Binding Milk}"/>
+                                    <Label Grid.Column="6" Text="{Binding Wool}"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </StackLayout>
+    </Grid>-->
+
 </ContentPage>
