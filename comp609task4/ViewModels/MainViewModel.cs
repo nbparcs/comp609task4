@@ -230,18 +230,48 @@ public class MainViewModel
         }
         return produceAmountPerDay;
     }
-    public bool DeleteById(int id)
+    public bool DeleteById(int id, out string deletedRecordInfo)
     {
+        deletedRecordInfo = string.Empty;
 
-        Animals? del_animal = Animals.FirstOrDefault(s => s.Id == id); //finding the store with the given id
+        // Find the animal in the collection
+        Animals del_animal = Animals.FirstOrDefault(s => s.Id == id);
         if (del_animal != null)
         {
-            if (_database.DeleteItem(del_animal) > 0) //if found and deleted from the database, remove it from the collection
+            // Attempt to delete the item from the database
+            if (_database.DeleteItem(del_animal) > 0)
+            {
+                // Remove the item from the collection
                 if (Animals.Remove(del_animal))
+                {
+                    // Construct the string with all the record details
+                    deletedRecordInfo = $"Deleted Record:\n" +
+                                        $"Type: {del_animal.Type}\n" +
+                                        $"ID: {del_animal.Id}\n" +
+                                        $"Cost: {del_animal.Cost}\n" +
+                                        $"Weight: {del_animal.Weight}\n" +
+                                        $"Colour: {del_animal.Colour}\n";
+
+                    // Append additional fields based on animal type
+                    if (del_animal is Cow cow)
+                    {
+                        deletedRecordInfo += $"Milk: {cow.Milk}\n";
+                    }
+                    else if (del_animal is Sheep sheep)
+                    {
+                        deletedRecordInfo += $"Wool: {sheep.Wool}\n";
+                    }
+
+                    // Return true indicating successful deletion
                     return true;
+                }
+            }
         }
+
+        // Return false if deletion fails or if animal with given ID not found
         return false;
     }
+
     public string CalculateProfitEstimate(int numberOfNewLivestock, string type)
     {
         double currentAvgProfitPerAnimal;
@@ -297,6 +327,7 @@ public class MainViewModel
         {
             newAnimal = new Cow
             {
+                Type = animalType,
                 Colour = color,
                 Cost = cost,
                 Weight = weight,
@@ -307,6 +338,7 @@ public class MainViewModel
         {
             newAnimal = new Sheep
             {
+                Type = animalType,
                 Colour = color,
                 Cost = cost,
                 Weight = weight,
@@ -369,6 +401,7 @@ public class MainViewModel
 
 
         // Update the animal properties
+        existingAnimal.Type = animalType;
         existingAnimal.Colour = color;
         existingAnimal.Cost = cost;
         existingAnimal.Weight = weight;

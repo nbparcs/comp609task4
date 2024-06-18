@@ -25,9 +25,17 @@ public partial class DeletePage : ContentPage
             return;
         }
 
-        if (vm.DeleteById(id))
-            DisplayAlert("Success", $"Record deleted: {id}", "OK");
+        string deletedRecordInfo;
+        if (vm.DeleteById(id, out deletedRecordInfo))
+        {
+            DisplayAlert("Success", deletedRecordInfo, "OK");
+        }
+        else
+        {
+            DisplayAlert("Error", $"Failed to delete record with ID: {id}", "OK");
+        }
 
         LiveStockID.Text = string.Empty;
     }
+
 }

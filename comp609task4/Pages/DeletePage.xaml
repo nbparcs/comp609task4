@@ -15,7 +15,6 @@
             <Button Grid.Column="1" Clicked="LiveStockDelete_Btn" Text="DELETE" BackgroundColor="#F9991C"/>
         </Grid>
 
-        <Label x:Name="RecordDeletedInfo" Text="Deleted Record: "/>
         
     </VerticalStackLayout>
 
