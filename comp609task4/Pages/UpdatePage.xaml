@@ -9,7 +9,22 @@
       <!-- Grid with padding & maximum width -->
     <VerticalStackLayout Margin="0,20" MaximumWidthRequest="800" Spacing="30" Padding="20,20" BackgroundColor="#FBF2F0">
         <Label Text="Update Animals Record" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
-        <Grid Padding="10" MaximumWidthRequest="500" RowDefinitions="50, 50, 50, 50, 50, 50, 50, 50, *" RowSpacing="10">
+        <Picker
+            x:Name="AnimalPicker"
+            Title="Select animal type"
+            Grid.Row="1"
+            Grid.Column="0"
+            BackgroundColor="Aquamarine"
+            HorizontalOptions="Start"
+            SelectedIndexChanged="OnAnimalTypeSelectionChange"
+            TitleColor="Blue"
+            WidthRequest="300" >
+            <Picker.Items>
+                <x:String>Cow</x:String>
+                <x:String>Sheep</x:String>
+            </Picker.Items>
+        </Picker>
+        <Grid Padding="1" MaximumWidthRequest="500" RowDefinitions="50, 50, 50, 50, 50, 50, 50, 50, *" RowSpacing="10">
             <Entry Grid.Row="1" x:Name="LiveStockID" Placeholder="Enter LiveStock ID" />
             <Entry Grid.Row="2" x:Name="LiveStockColour" Placeholder="Enter LiveStock Colour" />
             <Entry Grid.Row="3" x:Name="LiveStockCost" Placeholder="Enter LiveStock Cost" />

@@ -47,4 +47,9 @@ public class Database
     {
         return _connection.Insert(animal);
     }
+
+    public int UpdateItem(Animals animal)
+    {
+        return _connection.Update(animal);
+    }
 }

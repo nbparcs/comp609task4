@@ -3,14 +3,14 @@
              xmlns:models="clr-namespace:comp609task4.Models"
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"
              x:Class="comp609task4.Pages.DataPage">
-    <Grid>
+    <!--<Grid>
         <Image Source="background.png" Aspect="AspectFill"/>
             <StackLayout VerticalOptions="FillAndExpand">
 
             <VerticalStackLayout Padding="0,20" MaximumWidthRequest="1200" Spacing="15" BackgroundColor="#FFFFFF" Margin="0,90,0,0">
                 <Grid RowDefinitions="Auto,*" ColumnDefinitions="600,*"> 
                     
-                    <!-- LEFT -->
+                    --><!-- LEFT --><!--
 
                     <Grid Grid.Row="0" Grid.Column="0" Padding="30,36,0,0" BackgroundColor="#FFFFFF" ColumnDefinitions="Auto" HorizontalOptions="FillAndExpand" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="4">
                         <Label Grid.Row="0" Grid.Column="0" Text="WELCOME TO" FontSize="15" FontAttributes="Bold" FontFamily="Inter" />
@@ -23,9 +23,9 @@
 
                     </Grid>
 
-                    <!-- END LEFT -->
+                    --><!-- END LEFT -->
                     
-                    <!-- RIGHT -->
+                    <!-- RIGHT --><!--
                     <Grid Grid.Row="0" Grid.Column="1" Padding="30,10,30,0" BackgroundColor="#F4F4F4" ColumnDefinitions="*" HorizontalOptions="FillAndExpand" RowDefinitions="Auto" RowSpacing="10">
                         <CollectionView BackgroundColor="#ffffff" Margin="0,20" ItemsSource="{Binding Animals, Source={viewmodels:MainViewModel}}">
                             <CollectionView.Header>
@@ -60,20 +60,21 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                     </Grid>
-                    <!-- END RIGHT -->
+                    --><!-- END RIGHT --><!--
         
             </Grid>
                 </VerticalStackLayout>
         </StackLayout>
-    </Grid>
+    </Grid>-->
 
-    <!--<Grid>
+    <Grid>
         <Image Source="background.png" Aspect="AspectFill"/>
         <StackLayout VerticalOptions="FillAndExpand">
             <Label Text="Welcome" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" FontFamily="Inter" Margin="0,90,0,0" TextColor="#323232"/>
             <Label Text="to Livestock Management System - Comp 609"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="13" FontFamily="Inter" Margin="0,10,0,0" TextColor="#323232"/>
             <Label Text="LIVESTOCK DATA"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="40" 
-               FontAttributes="Bold" FontFamily="Inter" Margin="0,80,0,0" TextColor="#FF5E0D"/>
+               FontAttributes="Bold" FontFamily="Inter" Margin="0,0,0,0" TextColor="#FF5E0D"/>
+            <!--<Button Text="Refresh Data" Clicked="RefreshData_Clicked" HorizontalOptions="Center" Margin="0,20,0,0"/>-->
 
             <VerticalStackLayout Padding="0,20" MaximumWidthRequest="900" Spacing="15" BackgroundColor="#FFFFFF">
                 <CollectionView BackgroundColor="#ffffff" Margin="0,20" ItemsSource="{Binding Animals, Source={viewmodels:MainViewModel}}">
@@ -110,6 +111,6 @@
                 </CollectionView>
             </VerticalStackLayout>
         </StackLayout>
-    </Grid>-->
+    </Grid>
 
 </ContentPage>

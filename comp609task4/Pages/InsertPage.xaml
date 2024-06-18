@@ -27,7 +27,7 @@
             </Picker.Items>
         </Picker>
 
-        <Grid Padding="10" MaximumWidthRequest="500" RowDefinitions="50, 50, 50, 50, 50,50,50,50, *" RowSpacing="10">
+        <Grid Padding="1" MaximumWidthRequest="500" RowDefinitions="50, 50, 50, 50, 50,50,50,50, *" RowSpacing="5">
             
             <Entry Grid.Row="2" x:Name="LiveStockColour" Placeholder="Enter LiveStock Colour" />
             <Entry Grid.Row="3" x:Name="LiveStockCost" Placeholder="Enter LiveStock Cost" />

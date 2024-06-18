@@ -18,7 +18,7 @@
         <Tab Title="Data Listing" Icon="datapage_icon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:DataPage}"/>
         </Tab>
-        <Tab Title="Stats and Investment" Shell.NavBarIsVisible="True">
+        <!--<Tab Title="Stats and Investment" Shell.NavBarIsVisible="True">
             <ShellContent ContentTemplate="{DataTemplate Pages:StatsnInvestmentPage}"/>
         </Tab>
         <Tab Title="LiveStock Info" Shell.NavBarIsVisible="True">
@@ -32,7 +32,7 @@
         </Tab>
         <Tab Title="Update LiveStock" Shell.NavBarIsVisible="True">
             <ShellContent ContentTemplate="{DataTemplate Pages:UpdatePage}"/>
-        </Tab>
+        </Tab>-->
 
         <Tab Title="Stats and Investment" IsVisible="True" Icon="statspage_icon.png">
             <ShellContent ContentTemplate="{DataTemplate Pages:StatsnInvestmentPage}"/>

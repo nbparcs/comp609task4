@@ -178,7 +178,7 @@ public class MainViewModel
         var livestockWithWeight = Animals.Where(x => x.Weight != 0).ToList();
 
         if (livestockWithWeight.Count > 0)
-        {       
+        {
             double averageWeight = livestockWithWeight.Average(x => x.Weight); //Getting the average weight
             return $"{averageWeight:F2}kg";
         }
@@ -232,10 +232,10 @@ public class MainViewModel
     }
     public bool DeleteById(int id)
     {
-        
+
         Animals? del_animal = Animals.FirstOrDefault(s => s.Id == id); //finding the store with the given id
         if (del_animal != null)
-        {  
+        {
             if (_database.DeleteItem(del_animal) > 0) //if found and deleted from the database, remove it from the collection
                 if (Animals.Remove(del_animal))
                     return true;
@@ -245,7 +245,7 @@ public class MainViewModel
     public string CalculateProfitEstimate(int numberOfNewLivestock, string type)
     {
         double currentAvgProfitPerAnimal;
- 
+
         if (type == "Cow") //Current average profit per animal based on the type
         {
             var currentAvgProfit = CowSingleAvgProfit();
@@ -264,5 +264,165 @@ public class MainViewModel
         double estimatedAdditionalProfit = currentAvgProfitPerAnimal * numberOfNewLivestock; //Calculate the estimated additional daily profit
         return $"${estimatedAdditionalProfit:F2}";
     }
+
+
+    public bool InsertAnimal(string animalType, string color, string costText, string weightText, string milkText, string woolText, out string result)
+    {
+        result = string.Empty;
+        double cost, weight, milk = 0, wool = 0;
+
+        // Validate common fields
+        if (string.IsNullOrWhiteSpace(animalType) || string.IsNullOrWhiteSpace(color) ||
+            !double.TryParse(costText, out cost) || !double.TryParse(weightText, out weight))
+        {
+            result = "Invalid input: Please ensure all required fields are filled correctly.";
+            return false;
+        }
+
+        // Additional validation based on animal type
+        if (animalType == "Cow" && !double.TryParse(milkText, out milk))
+        {
+            result = "Invalid input: Please enter a valid number for milk produced.";
+            return false;
+        }
+        else if (animalType == "Sheep" && !double.TryParse(woolText, out wool))
+        {
+            result = "Invalid input: Please enter a valid number for wool produced.";
+            return false;
+        }
+
+        // Create the new animal object based on the selected type
+        Animals newAnimal;
+        if (animalType == "Cow")
+        {
+            newAnimal = new Cow
+            {
+                Colour = color,
+                Cost = cost,
+                Weight = weight,
+                Milk = milk
+            };
+        }
+        else if (animalType == "Sheep")
+        {
+            newAnimal = new Sheep
+            {
+                Colour = color,
+                Cost = cost,
+                Weight = weight,
+                Wool = wool
+            };
+        }
+        else
+        {
+            result = "Unknown animal type.";
+            return false;
+        }
+
+        // Insert the new animal into the database
+        var inserted = _database.InsertItem(newAnimal);
+        if (inserted > 0)
+        {
+            Animals.Add(newAnimal); // Add the new animal to the collection
+            result = $"Record added: {newAnimal}";
+            return true;
+        }
+        else
+        {
+            result = "Failed to insert record into the database.";
+            return false;
+        }
+    }
+
+    public bool UpdateAnimal(string animalId, string animalType, string color, string costText, string weightText, string milkText, string woolText, out string result)
+    {
+        result = string.Empty;
+        double cost, weight, milk = 0, wool = 0;
+
+        // Validate common fields including animalId
+        if (string.IsNullOrWhiteSpace(animalId) || string.IsNullOrWhiteSpace(animalType) || string.IsNullOrWhiteSpace(color) ||
+            !double.TryParse(costText, out cost) || !double.TryParse(weightText, out weight))
+        {
+            result = "Invalid input: Please ensure all required fields are filled correctly.";
+            return false;
+        }
+
+        // Additional validation based on animal type
+        if (animalType == "Cow" && !double.TryParse(milkText, out milk))
+        {
+            result = "Invalid input: Please enter a valid number for milk produced.";
+            return false;
+        }
+        else if (animalType == "Sheep" && !double.TryParse(woolText, out wool))
+        {
+            result = "Invalid input: Please enter a valid number for wool produced.";
+            return false;
+        }
+
+        // Find the animal in the collection
+        var existingAnimal = Animals.FirstOrDefault(a => a.Id.ToString() == animalId);
+        if (existingAnimal == null)
+        {
+            result = $"Animal with ID {animalId} not found.";
+            return false;
+        }
+
+
+        // Update the animal properties
+        existingAnimal.Colour = color;
+        existingAnimal.Cost = cost;
+        existingAnimal.Weight = weight;
+
+        if (animalType == "Cow")
+        {
+            if (existingAnimal is Cow cow)
+            {
+                cow.Milk = milk;
+            }
+            else
+            {
+                result = "Animal type mismatch.";
+                return false;
+            }
+        }
+        else if (animalType == "Sheep")
+        {
+            if (existingAnimal is Sheep sheep)
+            {
+                sheep.Wool = wool;
+            }
+            else
+            {
+                result = "Animal type mismatch.";
+                return false;
+            }
+        }
+        else
+        {
+            result = "Unknown animal type.";
+            return false;
+        }
+
+        // Update the animal in the database
+        var updated = _database.UpdateItem(existingAnimal);
+        if (updated > 0)
+        {
+            result = $"Record updated: {existingAnimal}";
+            return true;
+        }
+        else
+        {
+            result = "Failed to update record in the database.";
+            return false;
+        }
+    }
+
+    public void RefreshData()
+    {
+        Animals = new();
+        _database.ReadItems().ForEach(x => Animals.Add(x));
+    }
+
+
 
 }

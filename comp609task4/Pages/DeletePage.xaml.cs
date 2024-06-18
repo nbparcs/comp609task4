@@ -7,9 +7,9 @@ public partial class DeletePage : ContentPage
     {
         InitializeComponent();
         this.vm = vm;
-        
+
     }
-    
+
     private void LiveStockDelete_Btn(object sender, EventArgs e)
     {
         string input = LiveStockID.Text;
@@ -26,8 +26,8 @@ public partial class DeletePage : ContentPage
         }
 
         if (vm.DeleteById(id))
-            DisplayAlert("Error", $"Record deleted: {id}", "OK");
+            DisplayAlert("Success", $"Record deleted: {id}", "OK");
 
         LiveStockID.Text = string.Empty;
-    } 
+    }
 }
