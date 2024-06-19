@@ -3,8 +3,8 @@
              xmlns:models="clr-namespace:comp609task4.Models"
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"                   
              x:Class="comp609task4.Pages.InfoPage">
-
-    <Grid>
+    <ScrollView>
+        <Grid>
         <Image Source="background.png" Aspect="AspectFill"/>
         <StackLayout VerticalOptions="FillAndExpand">
             
@@ -109,4 +109,6 @@
     </VerticalStackLayout>
         </StackLayout>
     </Grid>-->
+
+  </ScrollView>
 </ContentPage>

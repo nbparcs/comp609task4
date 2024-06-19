@@ -1,14 +1,19 @@
-﻿namespace comp609task4.ViewModels;
+﻿using System.ComponentModel;
+
+namespace comp609task4.ViewModels;
 
 public class MainViewModel
 {
     public ObservableCollection<Animals> Animals { get; set; }
+    public ObservableCollection<int> FilteredIds { get; set; } = new ObservableCollection<int>();
+
     public readonly Database _database;
     public MainViewModel()
     {
         _database = new();
         Animals = new();
         _database.ReadItems().ForEach(x => Animals.Add(x));
+        Animals = new ObservableCollection<Animals>(_database.ReadItems());
 
     }
 
@@ -355,8 +360,12 @@ public class MainViewModel
         var inserted = _database.InsertItem(newAnimal);
         if (inserted > 0)
         {
-            Animals.Add(newAnimal); // Add the new animal to the collection
-            result = $"Record added: {newAnimal}";
+            // Add the new animal to the collection
+            Animals.Add(newAnimal);
+
+            // Format the success message without preceding comma
+            result = $"Record added: Type={newAnimal.Type}, ID={newAnimal.Id}, Cost={newAnimal.Cost}, Weight={newAnimal.Weight}, Colour={newAnimal.Colour}, " +
+                     $"Milk={(newAnimal is Cow cow ? cow.Milk : 0)}, Wool={(newAnimal is Sheep sheep ? sheep.Wool : 0)}";
             return true;
         }
         else
@@ -366,13 +375,14 @@ public class MainViewModel
         }
     }
 
-    public bool UpdateAnimal(string animalId, string animalType, string color, string costText, string weightText, string milkText, string woolText, out string result)
+
+    public bool UpdateAnimal(int animalId, string animalType, string color, string costText, string weightText, string milkText, string woolText, out string result)
     {
         result = string.Empty;
         double cost, weight, milk = 0, wool = 0;
 
         // Validate common fields including animalId
-        if (string.IsNullOrWhiteSpace(animalId) || string.IsNullOrWhiteSpace(animalType) || string.IsNullOrWhiteSpace(color) ||
+        if (string.IsNullOrWhiteSpace(animalId.ToString()) || string.IsNullOrWhiteSpace(animalType) || string.IsNullOrWhiteSpace(color) ||
             !double.TryParse(costText, out cost) || !double.TryParse(weightText, out weight))
         {
             result = "Invalid input: Please ensure all required fields are filled correctly.";
@@ -392,13 +402,12 @@ public class MainViewModel
         }
 
         // Find the animal in the collection
-        var existingAnimal = Animals.FirstOrDefault(a => a.Id.ToString() == animalId);
+        var existingAnimal = Animals.FirstOrDefault(a => a.Id == animalId);
         if (existingAnimal == null)
         {
             result = $"Animal with ID {animalId} not found.";
             return false;
         }
-
 
         // Update the animal properties
         existingAnimal.Type = animalType;
@@ -406,11 +415,16 @@ public class MainViewModel
         existingAnimal.Cost = cost;
         existingAnimal.Weight = weight;
 
+        // Declare variables for cow and sheep
+        double? cowMilk = null;
+        double? sheepWool = null;
+
         if (animalType == "Cow")
         {
             if (existingAnimal is Cow cow)
             {
                 cow.Milk = milk;
+                cowMilk = cow.Milk; // Assign milk value to local variable
             }
             else
             {
@@ -423,6 +437,7 @@ public class MainViewModel
             if (existingAnimal is Sheep sheep)
             {
                 sheep.Wool = wool;
+                sheepWool = sheep.Wool; // Assign wool value to local variable
             }
             else
             {
@@ -440,7 +455,8 @@ public class MainViewModel
         var updated = _database.UpdateItem(existingAnimal);
         if (updated > 0)
         {
-            result = $"Record updated: {existingAnimal}";
+            // Format the success message without preceding comma
+            result = $"Record updated: Type={existingAnimal.Type}, ID={existingAnimal.Id}, Cost={existingAnimal.Cost}, Weight={existingAnimal.Weight}, Colour={existingAnimal.Colour}, Milk={cowMilk ?? 0}, Wool={sheepWool ?? 0}";
             return true;
         }
         else
@@ -450,12 +466,35 @@ public class MainViewModel
         }
     }
 
+
+
+
     public void RefreshData()
     {
         Animals = new();
         _database.ReadItems().ForEach(x => Animals.Add(x));
     }
 
+    public void FilterIds(string animalType, string color)
+    {
+        FilteredIds.Clear();
+        var filtered = Animals.Where(a => a.GetType().Name == animalType && a.Colour == color)
+                              .Select(a => a.Id);
+        foreach (var id in filtered)
+        {
+            FilteredIds.Add(id);
+        }
+        OnPropertyChanged(nameof(FilteredIds));
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
 
 
 }
+

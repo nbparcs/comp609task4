@@ -66,8 +66,8 @@
                 </VerticalStackLayout>
         </StackLayout>
     </Grid>-->
-
-    <Grid>
+    <ScrollView>
+        <Grid>
         <Image Source="background.png" Aspect="AspectFill"/>
         <StackLayout VerticalOptions="FillAndExpand">
             <Label Text="Welcome" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" FontFamily="Inter" Margin="0,90,0,0" TextColor="#323232"/>
@@ -112,5 +112,5 @@
             </VerticalStackLayout>
         </StackLayout>
     </Grid>
-
+   </ScrollView>
 </ContentPage>

@@ -5,17 +5,24 @@
              xmlns:models="clr-namespace:comp609task4.Models"
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"
              BackgroundColor="#04243B">
+   <ScrollView>
+        <VerticalStackLayout Margin="0,20" MaximumWidthRequest="800" Spacing="30" Padding="20,20" BackgroundColor="#FBF2F0">
 
-    <VerticalStackLayout Margin="0,20" MaximumWidthRequest="800" Spacing="30" Padding="20,20" BackgroundColor="#FBF2F0">
-        
-        <Label Text="Delete Animals Record" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
+            <Label Text="Delete Animals Record" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
 
-        <Grid ColumnDefinitions="2*, 1*" ColumnSpacing="10">
-                <Entry x:Name="LiveStockID" Placeholder="LiveStock ID"/>
-            <Button Grid.Column="1" Clicked="LiveStockDelete_Btn" Text="DELETE" BackgroundColor="#F9991C"/>
-        </Grid>
+            <Grid ColumnDefinitions="2*, 1*" ColumnSpacing="10">
+                <Picker x:Name="IdPicker"
+                Title="Select ID"
+                Grid.Row="3"
+                Grid.Column="0"
+                BackgroundColor="Aquamarine"
+                HorizontalOptions="Start"
+                TitleColor="Blue"
+                WidthRequest="300" />
+                <Button Grid.Column="1" Clicked="LiveStockDelete_Btn" Text="DELETE" BackgroundColor="#F9991C"/>
+            </Grid>
 
-        
-    </VerticalStackLayout>
 
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

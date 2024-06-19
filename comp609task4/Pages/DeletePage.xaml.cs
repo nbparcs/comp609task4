@@ -1,41 +1,44 @@
-namespace comp609task4.Pages;
-
-public partial class DeletePage : ContentPage
+namespace comp609task4.Pages
 {
-    MainViewModel vm;
-    public DeletePage(MainViewModel vm)
+    public partial class DeletePage : ContentPage
     {
-        InitializeComponent();
-        this.vm = vm;
+        MainViewModel vm;
 
+        public DeletePage(MainViewModel vm)
+        {
+            InitializeComponent();
+            this.vm = vm;
+
+            // Populate IdPicker with available IDs
+            foreach (var animal in vm.Animals)
+            {
+                IdPicker.Items.Add(animal.Id.ToString());
+            }
+        }
+
+        private void LiveStockDelete_Btn(object sender, EventArgs e)
+        {
+            if (IdPicker.SelectedIndex == -1)
+            {
+                DisplayAlert("Error", "Please select an ID", "OK");
+                return;
+            }
+
+            // Get selected ID
+            int id = Convert.ToInt32(IdPicker.SelectedItem);
+
+            string deletedRecordInfo;
+            if (vm.DeleteById(id, out deletedRecordInfo))
+            {
+                DisplayAlert("Success", deletedRecordInfo, "OK");
+            }
+            else
+            {
+                DisplayAlert("Error", $"Failed to delete record with ID: {id}", "OK");
+            }
+
+            // Clear selected ID after deletion
+            IdPicker.SelectedIndex = -1;
+        }
     }
-
-    private void LiveStockDelete_Btn(object sender, EventArgs e)
-    {
-        string input = LiveStockID.Text;
-        if (string.IsNullOrWhiteSpace(input))
-        {
-            DisplayAlert("Error", "Invalid item name", "OK");
-            return;
-        }
-
-        if (!int.TryParse(LiveStockID.Text, out int id))
-        {
-            DisplayAlert("Error", "Invalid quantity", "OK");
-            return;
-        }
-
-        string deletedRecordInfo;
-        if (vm.DeleteById(id, out deletedRecordInfo))
-        {
-            DisplayAlert("Success", deletedRecordInfo, "OK");
-        }
-        else
-        {
-            DisplayAlert("Error", $"Failed to delete record with ID: {id}", "OK");
-        }
-
-        LiveStockID.Text = string.Empty;
-    }
-
 }
