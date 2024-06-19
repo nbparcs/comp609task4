@@ -30,14 +30,14 @@
 
         <!-- LEFT CONTANT -->
                     <Grid ColumnSpacing="30" Grid.Row="1" Grid.Column="0" Padding="40,0,0,50" BackgroundColor="#FFCDB4"  ColumnDefinitions="Auto,Auto,Auto,Auto,Auto" HorizontalOptions="FillAndExpand" RowDefinitions="Auto, Auto, Auto, Auto, 45, Auto, Auto" RowSpacing="20">
-                        <Picker x:Name="LivestockTypePicker" Title="Select Animal Type" Background="#F4f4f4" HorizontalOptions="Start" Grid.Column="0" Grid.Row="2">
-                            <Picker.Items>
-                                <x:String>Cow</x:String>
-                                <x:String>Sheep</x:String>
-                        </Picker.Items>
-                        </Picker>
+                            <Picker x:Name="LivestockTypePicker" Title="Select Animal Type" Background="#F4f4f4" HorizontalOptions="Start" Grid.Column="0" Grid.Row="2">
+                                <Picker.Items>
+                                    <x:String>Cow</x:String>
+                                    <x:String>Sheep</x:String>
+                                </Picker.Items>
+                            </Picker>
 
-                    <Picker x:Name="LiveStockColourPicker" Title="Select Animal Colour" Margin="0,0,0,20" Grid.Row="3" Grid.Column="0" Background="#F4f4f4" HorizontalOptions="Start" >
+                            <Picker x:Name="LiveStockColourPicker" Title="Select Animal Colour" Margin="0,0,0,20" Grid.Row="3" Grid.Column="0" Background="#F4f4f4" HorizontalOptions="Start" >
                         <Picker.Items>
                             <x:String>All</x:String>
                             <x:String>Red</x:String>

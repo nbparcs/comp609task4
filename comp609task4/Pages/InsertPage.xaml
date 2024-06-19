@@ -8,20 +8,21 @@
              x:DataType="Pages:InsertPage"
              BackgroundColor="#04243B">
     <ScrollView>
+        <Grid>
+        <Image Source="background.png" Aspect="AspectFill"/>
+            <VerticalStackLayout Margin="0,20" MaximumWidthRequest="800" Spacing="30" Padding="20,20" >
+                <Label Text="Add New Animals" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" FontFamily="Inter" Margin="0,90,0,0" TextColor="#323232"/>
 
-        <VerticalStackLayout Margin="0,20" MaximumWidthRequest="800" Spacing="30" Padding="20,20" BackgroundColor="#FBF2F0">
-        <Label Text="Add New Animals" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
-
-        <Picker
+                <Picker
             x:Name="AnimalPicker"
             Title="Select animal type"
             Grid.Row="1"
             Grid.Column="0"
-            BackgroundColor="Aquamarine"
+            Background="#ffffff"
             HorizontalOptions="Start"
             SelectedIndexChanged="OnAnimalTypeSelectionChange"
-            TitleColor="Blue"
-            WidthRequest="300" >
+            TitleColor="Black"
+            WidthRequest="200" >
             <Picker.Items>
                 <x:String>Cow</x:String>
                 <x:String>Sheep</x:String>
@@ -29,16 +30,18 @@
         </Picker>
             <Picker x:Name="ColourPicker"
                 Title="Select Colour"
-                TitleColor="Blue"
-                WidthRequest="300">
+                HorizontalOptions="Start"
+                Background="#ffffff"
+                TitleColor="Black"
+                WidthRequest="200">
             </Picker>
 
             <Grid Padding="1" MaximumWidthRequest="500" RowDefinitions="50, 50, 50, 50, 50,50,50,50, *" RowSpacing="5">
 
-            <Entry Grid.Row="0" x:Name="LiveStockCost" Placeholder="Enter LiveStock Cost" />
-            <Entry Grid.Row="1" x:Name="LiveStockWeight" Placeholder="Enter LiveStock Weight" />
-            <Entry Grid.Row="2" x:Name="LiveStockMilk" Placeholder="Enter milk produced" />
-            <Entry Grid.Row="3" x:Name="LiveStockWool" Placeholder="Enter wool produced" />
+                    <Entry HorizontalOptions="Start" Grid.Row="0" x:Name="LiveStockCost" Placeholder="Enter LiveStock Cost" />
+                    <Entry HorizontalOptions="Start" Grid.Row="1" x:Name="LiveStockWeight" Placeholder="Enter LiveStock Weight" />
+                    <Entry HorizontalOptions="Start" Grid.Row="2" x:Name="LiveStockMilk" Placeholder="Enter milk produced" />
+                    <Entry HorizontalOptions="Start" Grid.Row="3" x:Name="LiveStockWool" Placeholder="Enter wool produced" />
 
                 <Grid ColumnDefinitions="2*,1*" ColumnSpacing="5" Grid.Row="6">
                     <Button Text="INSERT" Clicked="InsertRecord_Btn" Grid.Column="1" BackgroundColor="#F9991C"/>
@@ -48,5 +51,6 @@
             <ListView ItemsSource="{Binding InsertRecord}"  Grid.Row="8"/>
         </Grid>
     </VerticalStackLayout>
-   </ScrollView>
+   </Grid>
+    </ScrollView>
 </ContentPage>
