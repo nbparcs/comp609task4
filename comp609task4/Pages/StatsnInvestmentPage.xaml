@@ -4,7 +4,9 @@
              xmlns:models="clr-namespace:comp609task4.Models"
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"
              x:Class="comp609task4.Pages.StatsnInvestmentPage">
-    
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel />
+    </ContentPage.BindingContext>
     <Grid>
         <Image Source="background.png" Aspect="AspectFill"/>
         <StackLayout VerticalOptions="FillAndExpand">

@@ -471,7 +471,7 @@ public class MainViewModel
 
     public void RefreshData()
     {
-        Animals = new();
+        Animals.Clear();
         _database.ReadItems().ForEach(x => Animals.Add(x));
     }
 
@@ -493,6 +493,7 @@ public class MainViewModel
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+
 
 
 

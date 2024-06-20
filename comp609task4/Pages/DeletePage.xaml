@@ -13,15 +13,16 @@
                 <Label Text="Delete Animals Record" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" FontFamily="Inter" Margin="0,25,0,0" TextColor="#323232"/>
 
                 <Grid ColumnDefinitions="2*, 1*" ColumnSpacing="10">
-                <Picker x:Name="IdPicker"
+                    <Picker x:Name="IdPicker"
                 Title="Select ID"
                 Grid.Row="3"
                 Grid.Column="0"
                 BackgroundColor="#ffffff"
                 HorizontalOptions="Start"
                 TitleColor="Black"
-                WidthRequest="300" />
-                <Button Grid.Column="1" Clicked="LiveStockDelete_Btn" Text="DELETE" BackgroundColor="#FF5E0D" HeightRequest="40"/>
+                WidthRequest="300"
+                />
+                    <Button Grid.Column="1" Clicked="LiveStockDelete_Btn" Text="DELETE" BackgroundColor="#FF5E0D" HeightRequest="40"/>
             </Grid>
 
 

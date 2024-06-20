@@ -9,14 +9,16 @@ public partial class DataPage : ContentPage
         InitializeComponent();
         _vm = vm;
         BindingContext = _vm;
+        this._vm = vm;
+
     }
     protected override void OnAppearing()
     {
         base.OnAppearing();
         _vm.RefreshData(); // Automatically refresh data when page appears
     }
-    private void RefreshData_Clicked(object sender, EventArgs e)
-    {
-        _vm.RefreshData(); // Call a method in MainViewModel to refresh data
-    }
+    //private void RefreshData_Clicked(object sender, EventArgs e)
+    //{
+    //    _vm.RefreshData(); // Call a method in MainViewModel to refresh data
+    //}
 }

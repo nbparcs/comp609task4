@@ -3,6 +3,10 @@
              xmlns:models="clr-namespace:comp609task4.Models"
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"
              x:Class="comp609task4.Pages.DataPage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel />
+    </ContentPage.BindingContext>
     <!--<Grid>
         <Image Source="background.png" Aspect="AspectFill"/>
             <StackLayout VerticalOptions="FillAndExpand">
@@ -77,7 +81,7 @@
             <!--<Button Text="Refresh Data" Clicked="RefreshData_Clicked" HorizontalOptions="Center" Margin="0,20,0,0"/>-->
 
             <VerticalStackLayout Padding="0,20" MaximumWidthRequest="900" Spacing="15" BackgroundColor="#FFFFFF">
-                <CollectionView BackgroundColor="#ffffff" Margin="0,20" ItemsSource="{Binding Animals, Source={viewmodels:MainViewModel}}">
+                <CollectionView BackgroundColor="#ffffff" Margin="0,20" ItemsSource="{Binding Animals}">
                     <CollectionView.Header>
                         <Border StrokeShape="RoundRectangle 10,10,0,0" StrokeThickness="0">
                             <Grid ColumnDefinitions="*,*,*,*,*,*,*" Padding="10,10,10,10" BackgroundColor="#FF5E0D">

@@ -3,6 +3,7 @@
 public class Database
 {
     private readonly SQLiteConnection _connection;
+
     public Database() //establish connection to database first
     {
         string dbName = "FarmDataOriginal.db";

@@ -47,7 +47,7 @@
                     <Entry WidthRequest="300" HorizontalOptions="Start" Grid.Row="2" x:Name="LiveStockMilk" Placeholder="Enter milk produced" />
                     <Entry WidthRequest="300" HorizontalOptions="Start" Grid.Row="3" x:Name="LiveStockWool" Placeholder="Enter wool produced" />
 
-                <Grid ColumnDefinitions="1*,1*" Grid.Row="3">
+                <Grid ColumnDefinitions="2*,1*" Grid.Row="4">
                         <Button HorizontalOptions="Start" WidthRequest="200" Text="INSERT" Clicked="InsertRecord_Btn" Grid.Column="1" BackgroundColor="#FF5E0D"/>
             </Grid>
 

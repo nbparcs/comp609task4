@@ -22,10 +22,17 @@ public partial class InsertPage : ContentPage
         if (type == "Cow")
         {
             ColourPicker.ItemsSource = new string[] { "Red", "Black" };
+            LiveStockWool.IsVisible = false;
         }
         else if (type == "Sheep")
         {
             ColourPicker.ItemsSource = new string[] { "White", "Black" };
+            LiveStockMilk.IsVisible = false;
+        }
+        else
+        {
+            LiveStockWool.IsVisible = true;
+            LiveStockMilk.IsVisible = true;
         }
 
         // Optional: Set the default selected index for ColourPicker
@@ -74,5 +81,7 @@ public partial class InsertPage : ContentPage
             LiveStockWool.Text = string.Empty;
             AnimalPicker.SelectedIndex = -1;
         }
+
+
     }
 }

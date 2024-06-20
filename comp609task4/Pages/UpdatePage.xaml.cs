@@ -24,10 +24,13 @@ public partial class UpdatePage : ContentPage
         if (type == "Cow")
         {
             ColourPicker.ItemsSource = new string[] { "Red", "Black" };
+            LiveStockWool.IsVisible = false;
         }
         else if (type == "Sheep")
         {
             ColourPicker.ItemsSource = new string[] { "White", "Black" };
+            LiveStockMilk.IsVisible = false;
+
         }
         ColourPicker.SelectedIndexChanged += OnColorSelectionChange;
     }

@@ -7,11 +7,13 @@ namespace comp609task4.Pages
         public DeletePage(MainViewModel vm)
         {
             InitializeComponent();
+            BindingContext = vm;
             this.vm = vm;
 
             // Populate IdPicker with available IDs
             foreach (var animal in vm.Animals)
             {
+
                 IdPicker.Items.Add(animal.Id.ToString());
             }
         }
@@ -39,6 +41,21 @@ namespace comp609task4.Pages
 
             // Clear selected ID after deletion
             IdPicker.SelectedIndex = -1;
+
+            IdPicker.Items.Clear();
+
+
+            foreach (var animal in vm.Animals)
+            {
+                IdPicker.Items.Add(animal.Id.ToString());
+
+            }
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.RefreshData(); // Automatically refresh data when page appears
+        }
+
     }
 }
