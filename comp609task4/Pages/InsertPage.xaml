@@ -11,40 +11,44 @@
         <Grid>
         <Image Source="background.png" Aspect="AspectFill"/>
             <VerticalStackLayout Margin="0,20" MaximumWidthRequest="800" Spacing="30" Padding="20,20" >
-                <Label Text="Add New Animals" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" FontFamily="Inter" Margin="0,90,0,0" TextColor="#323232"/>
+                <Label Text="Add New Animals" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" FontFamily="Inter" Margin="0,25,0,0" TextColor="#323232"/>
+
+
 
                 <Picker
-            x:Name="AnimalPicker"
-            Title="Select animal type"
-            Grid.Row="1"
-            Grid.Column="0"
-            Background="#ffffff"
-            HorizontalOptions="Start"
-            SelectedIndexChanged="OnAnimalTypeSelectionChange"
-            TitleColor="Black"
-            WidthRequest="200" >
-            <Picker.Items>
-                <x:String>Cow</x:String>
-                <x:String>Sheep</x:String>
-            </Picker.Items>
-        </Picker>
-            <Picker x:Name="ColourPicker"
+                x:Name="AnimalPicker"
+                Title="Select animal type"
+                Margin= "80,0,0,0"
+                Grid.Row="1"
+                Grid.Column="0"
+                Background="#ffffff"
+                HorizontalOptions="Start"
+                SelectedIndexChanged="OnAnimalTypeSelectionChange"
+                TitleColor="Black"
+                WidthRequest="200" >
+                    <Picker.Items>
+                        <x:String>Cow</x:String>
+                        <x:String>Sheep</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Picker x:Name="ColourPicker"
                 Title="Select Colour"
                 HorizontalOptions="Start"
+                Margin= "80,0,0,0"
                 Background="#ffffff"
                 TitleColor="Black"
                 WidthRequest="200">
-            </Picker>
+                </Picker>
+                <Grid Margin= "80,0,0,20" Padding="1" MaximumWidthRequest="800" RowDefinitions="50, 50, 50, 50, 50,50,50,50, *" RowSpacing="20">
 
-            <Grid Padding="1" MaximumWidthRequest="500" RowDefinitions="50, 50, 50, 50, 50,50,50,50, *" RowSpacing="5">
 
-                    <Entry HorizontalOptions="Start" Grid.Row="0" x:Name="LiveStockCost" Placeholder="Enter LiveStock Cost" />
-                    <Entry HorizontalOptions="Start" Grid.Row="1" x:Name="LiveStockWeight" Placeholder="Enter LiveStock Weight" />
-                    <Entry HorizontalOptions="Start" Grid.Row="2" x:Name="LiveStockMilk" Placeholder="Enter milk produced" />
-                    <Entry HorizontalOptions="Start" Grid.Row="3" x:Name="LiveStockWool" Placeholder="Enter wool produced" />
+                    <Entry WidthRequest="300" HorizontalOptions="Start" Grid.Row="0" x:Name="LiveStockCost" Placeholder="Enter LiveStock Cost" />
+                    <Entry WidthRequest="300" HorizontalOptions="Start" Grid.Row="1" x:Name="LiveStockWeight" Placeholder="Enter LiveStock Weight" />
+                    <Entry WidthRequest="300" HorizontalOptions="Start" Grid.Row="2" x:Name="LiveStockMilk" Placeholder="Enter milk produced" />
+                    <Entry WidthRequest="300" HorizontalOptions="Start" Grid.Row="3" x:Name="LiveStockWool" Placeholder="Enter wool produced" />
 
-                <Grid ColumnDefinitions="2*,1*" ColumnSpacing="5" Grid.Row="6">
-                    <Button Text="INSERT" Clicked="InsertRecord_Btn" Grid.Column="1" BackgroundColor="#F9991C"/>
+                <Grid ColumnDefinitions="1*,1*" Grid.Row="3">
+                        <Button HorizontalOptions="Start" WidthRequest="200" Text="INSERT" Clicked="InsertRecord_Btn" Grid.Column="1" BackgroundColor="#FF5E0D"/>
             </Grid>
 
 

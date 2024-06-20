@@ -1,4 +1,5 @@
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<?xml version="1.0" encoding="utf-8" ?>
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Pages="clr-namespace:comp609task4.Pages"
              xmlns:models="clr-namespace:comp609task4.Models"
@@ -9,19 +10,22 @@
       <!-- Grid with padding & maximum width -->
 
     <ScrollView>
-        <VerticalStackLayout Margin="0,0" MaximumWidthRequest="800" Spacing="30" Padding="20,20" BackgroundColor="#FBF2F0">
-        
-            <Label Text="Update Animals Record" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
-        <Picker
+        <Grid>
+           <Image Source="background.png" Aspect="AspectFill"/>
+            <VerticalStackLayout Margin="0,0" MaximumWidthRequest="800" Spacing="30" Padding="20,20">
+
+                <Label Text="Update Animals Record"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" FontFamily="Inter" Margin="0,25,0,0" TextColor="#323232"/>
+                <Picker
             x:Name="AnimalPicker"
             Title="Select animal type"
             Grid.Row="1"
             Grid.Column="0"
-            BackgroundColor="Aquamarine"
+            BackgroundColor="#ffffff"
             HorizontalOptions="Start"
             SelectedIndexChanged="OnAnimalTypeSelectionChange"
-            TitleColor="Blue"
-            WidthRequest="300" >
+            TitleColor="Black"
+            WidthRequest="300" 
+            Margin="130, 0,0,0">
             <Picker.Items>
                 <x:String>Cow</x:String>
                 <x:String>Sheep</x:String>
@@ -30,34 +34,40 @@
 
         <Picker x:Name="ColourPicker"
                 Title="Select Colour"
-                TitleColor="Blue"
-                WidthRequest="300">
+                Grid.Row="2"
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                BackgroundColor="#ffffff"
+                TitleColor="Black"
+                WidthRequest="300"
+                Margin="130, 0,0,0">
         </Picker>
 
         <Picker x:Name="IdPicker"
                 Title="Select ID"
                 Grid.Row="3"
                 Grid.Column="0"
-                BackgroundColor="Aquamarine"
+                BackgroundColor="#ffffff"
                 HorizontalOptions="Start"
-                TitleColor="Blue"
-                WidthRequest="300" />
+                TitleColor="Black"
+                WidthRequest="300"
+                Margin="130, 0,0,0"/>
 
-        <Grid  MaximumWidthRequest="500" RowDefinitions="50, 50, 50, 50, 50, 50, 50, 50, *" RowSpacing="10">
+        <Grid   MaximumWidthRequest="500" RowDefinitions="50, 50, 50, 50, 50, 50, 50, 50, *" RowSpacing="10">
             <Entry Grid.Row="0" x:Name="LiveStockCost" Placeholder="Enter LiveStock Cost" />
             <Entry Grid.Row="1" x:Name="LiveStockWeight" Placeholder="Enter LiveStock Weight" />
             <Entry Grid.Row="2" x:Name="LiveStockMilk" Placeholder="Enter milk produced" />
             <Entry Grid.Row="3" x:Name="LiveStockWool" Placeholder="Enter wool produced" />
 
             <Grid ColumnDefinitions="2*,1*" ColumnSpacing="5" Grid.Row="6">
-                <Button Text="UPDATE" Clicked="UpdateRecord_Btn" Grid.Column="1" BackgroundColor="#F9991C"/>
+                    <Button Text="UPDATE" Clicked="UpdateRecord_Btn" Grid.Column="1" BackgroundColor="#FF5E0D"/>
             </Grid>
 
 
             <ListView ItemsSource="{Binding UpdateRecord}" Grid.Row="8"/>
         </Grid>
     </VerticalStackLayout>
-
-   </ScrollView>
+    </Grid>
+    </ScrollView>
 
 </ContentPage>

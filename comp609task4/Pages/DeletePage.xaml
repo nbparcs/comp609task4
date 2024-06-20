@@ -6,23 +6,26 @@
              xmlns:viewmodels="clr-namespace:comp609task4.ViewModels"
              BackgroundColor="#04243B">
    <ScrollView>
-        <VerticalStackLayout Margin="0,20" MaximumWidthRequest="800" Spacing="30" Padding="20,20" BackgroundColor="#FBF2F0">
+        <Grid>
+           <Image Source="background.png" Aspect="AspectFill"/>
+            <VerticalStackLayout Margin="0,20" MaximumWidthRequest="800" Spacing="30" Padding="20,20" >
 
-            <Label Text="Delete Animals Record" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
+                <Label Text="Delete Animals Record" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" FontFamily="Inter" Margin="0,25,0,0" TextColor="#323232"/>
 
-            <Grid ColumnDefinitions="2*, 1*" ColumnSpacing="10">
+                <Grid ColumnDefinitions="2*, 1*" ColumnSpacing="10">
                 <Picker x:Name="IdPicker"
                 Title="Select ID"
                 Grid.Row="3"
                 Grid.Column="0"
-                BackgroundColor="Aquamarine"
+                BackgroundColor="#ffffff"
                 HorizontalOptions="Start"
-                TitleColor="Blue"
+                TitleColor="Black"
                 WidthRequest="300" />
-                <Button Grid.Column="1" Clicked="LiveStockDelete_Btn" Text="DELETE" BackgroundColor="#F9991C"/>
+                <Button Grid.Column="1" Clicked="LiveStockDelete_Btn" Text="DELETE" BackgroundColor="#FF5E0D" HeightRequest="40"/>
             </Grid>
 
 
         </VerticalStackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>
